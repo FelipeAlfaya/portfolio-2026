@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Felipe Alfaya",
+    "subtitle": "Desarrollador Full-Stack creando experiencias digitales que combinan creatividad con funcionalidad",
+    "viewWork": "Ver Mi Trabajo",
+    "downloadCV": "Descargar CV"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description1": "Soy un desarrollador full-stack apasionado con más de 3 años de experiencia creando soluciones digitales que marcan la diferencia. Me especializo en tecnologías web modernas y tengo un ojo agudo para el diseño y la experiencia de usuario.",
+    "description2": "Cuando no estoy programando, puedes encontrarme explorando nuevas tecnologías, contribuyendo a proyectos de código abierto o compartiendo conocimiento con la comunidad de desarrolladores."
+  },
+  "services": {
+    "title": "Lo Que Hago",
+    "subtitle": "Ofrezco una variedad de servicios para ayudar a dar vida a tu visión digital",
+    "frontend": {
+      "title": "Desarrollo Frontend",
+      "description": "Creando interfaces de usuario responsivas e interactivas con frameworks y bibliotecas modernas."
+    },
+    "uiux": {
+      "title": "Diseño UI/UX",
+      "description": "Diseñando experiencias de usuario intuitivas y visualmente atractivas que convierten."
+    },
+    "mobile": {
+      "title": "Desarrollo Mobile",
+      "description": "Construyendo aplicaciones móviles multiplataforma con React Native y Flutter."
+    }
+  },
+  "github": {
+    "title": "Actividad en GitHub",
+    "subtitle": "Explora mis tecnologías favoritas y actividad de desarrollo",
+    "repositories": "Repositorios",
+    "commits": "Commits (1 año)",
+    "languages": "Lenguajes",
+    "mostUsed": "Tecnologías Más Utilizadas",
+    "barChart": "Gráfico de Barras",
+    "pieChart": "Gráfico Circular",
+    "commitActivity": "Actividad de Commits (30 días)",
+    "last30Days": "Últimos 30 días de actividad en GitHub",
+    "configureUsername": "Configura NEXT_PUBLIC_GITHUB_USERNAME para mostrar estadísticas de GitHub"
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "viewAll": "Ver Todos los Proyectos",
+    "ecommerce": {
+      "title": "Plataforma E-Commerce",
+      "description": "Una solución e-commerce full-stack construida con Next.js e integración Stripe"
+    },
+    "taskManagement": {
+      "title": "App de Gestión de Tareas",
+      "description": "Una aplicación colaborativa de gestión de tareas con actualizaciones en tiempo real"
+    },
+    "code": "Código",
+    "liveDemo": "Demo en Vivo"
+  },
+  "contact": {
+    "title": "Trabajemos Juntos",
+    "subtitle": "¿Tienes un proyecto en mente? Me encantaría escucharlo. Creemos algo increíble juntos.",
+    "getInTouch": "Ponerse en Contacto"
+  },
+  "footer": {
+    "copyright": "© 2025 Felipe Alfaya. Todos los derechos reservados."
+  },
+  "projectsPage": {
+    "title": "Mis Proyectos",
+    "subtitle": "Una colección de proyectos en los que he trabajado, mostrando mis habilidades en desarrollo web, diseño y resolución de problemas.",
+    "backToHome": "Volver al Inicio",
+    "searchPlaceholder": "Buscar proyectos...",
+    "allCategories": "Todas las Categorías",
+    "filterBy": "Filtrar por categoría",
+    "facilize": {
+      "description": "Plataforma completa de gestión de negocios que conecta proveedores de servicios con sus clientes."
+    }
+  }
+}
+

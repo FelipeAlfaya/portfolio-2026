@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Felipe Alfaya",
+    "subtitle": "Full-Stack Developer crafting digital experiences that blend creativity with functionality",
+    "viewWork": "View My Work",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "title": "About Me",
+    "description1": "I'm a passionate full-stack developer with 3+ years of experience creating digital solutions that make a difference. I specialize in modern web technologies and have a keen eye for design and user experience.",
+    "description2": "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community."
+  },
+  "services": {
+    "title": "What I Do",
+    "subtitle": "I offer a range of services to help bring your digital vision to life",
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Creating responsive and interactive user interfaces with modern frameworks and libraries."
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Designing intuitive and visually appealing user experiences that convert."
+    },
+    "mobile": {
+      "title": "Mobile Development",
+      "description": "Building cross-platform mobile applications with React Native and Flutter."
+    }
+  },
+  "github": {
+    "title": "GitHub Activity",
+    "subtitle": "Explore my favorite technologies and development activity",
+    "repositories": "Repositories",
+    "commits": "Commits (1 year)",
+    "languages": "Languages",
+    "mostUsed": "Most Used Technologies",
+    "barChart": "Bar Chart",
+    "pieChart": "Pie Chart",
+    "commitActivity": "Commit Activity (30 days)",
+    "last30Days": "Last 30 days of GitHub activity",
+    "configureUsername": "Configure NEXT_PUBLIC_GITHUB_USERNAME to display GitHub statistics"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewAll": "View All Projects",
+    "ecommerce": {
+      "title": "Facilize",
+      "description": "Complete business management platform that connects service providers to their clients."
+    },
+    "taskManagement": {
+      "title": "Task Management App",
+      "description": "A collaborative task management application with real-time updates"
+    },
+    "code": "Code",
+    "liveDemo": "Live Demo"
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "subtitle": "Have a project in mind? I'd love to hear about it. Let's create something amazing together.",
+    "getInTouch": "Get In Touch"
+  },
+  "footer": {
+    "copyright": "© 2025 Felipe Alfaya. All rights reserved."
+  },
+  "projectsPage": {
+    "title": "My Projects",
+    "subtitle": "A collection of projects I've worked on, showcasing my skills in web development, design, and problem-solving.",
+    "backToHome": "Back to Home",
+    "searchPlaceholder": "Search projects...",
+    "allCategories": "All Categories",
+    "filterBy": "Filter by category",
+    "facilize": {
+      "description": "Complete business management platform that connects service providers to their clients."
+    }
+  }
+}
+
