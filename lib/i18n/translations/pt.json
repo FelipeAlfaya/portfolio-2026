@@ -6,14 +6,14 @@
   },
   "hero": {
     "title": "Felipe Alfaya",
-    "subtitle": "Desenvolvedor Full-Stack criando experiências digitais que combinam criatividade com funcionalidade",
+    "subtitle": "Um Desenvolvedor Web apaixonado por criar soluções digitais que fazem a diferença.",
     "viewWork": "Ver Meu Trabalho",
     "downloadCV": "Baixar CV"
   },
   "about": {
     "title": "Sobre Mim",
-    "description1": "Sou um desenvolvedor full-stack apaixonado com mais de 3 anos de experiência criando soluções digitais que fazem a diferença. Especializo-me em tecnologias web modernas e tenho um olhar atento para design e experiência do usuário.",
-    "description2": "Quando não estou programando, você pode me encontrar explorando novas tecnologias, contribuindo para projetos open-source ou compartilhando conhecimento com a comunidade de desenvolvedores."
+    "description1": "Sou um desenvolvedor web com mais de 3 anos de experiência criando soluções digitais que fazem a diferença. Tenho proficiência em tecnologias web modernas e um olhar atento para design e experiência do usuário.",
+    "description2": "Atuo no desenvolvimento de interfaces eficientes e funcionais, bem como desenvolvimento da lógica de negócios e backend, buscando sempre código limpo, escalável e otimizado."
   },
   "services": {
     "title": "O Que Eu Faço",
@@ -29,6 +29,18 @@
     "mobile": {
       "title": "Desenvolvimento Mobile",
       "description": "Construindo aplicações móveis multiplataforma com React Native e Flutter."
+    },
+    "backend": {
+      "title": "Arquitetura de Software",
+      "description": "Planejamento e estruturação de sistemas robustos, escaláveis e de alta performance."
+    },
+    "api": {
+      "title": "Desenvolvimento de APIs",
+      "description": "Criação de APIs RESTful e GraphQL eficientes, seguras e bem documentadas."
+    },
+    "devops": {
+      "title": "Soluções em Nuvem (AWS)",
+      "description": "Implementação de infraestrutura em nuvem, CI/CD e serveless utilizando serviços da AWS."
     }
   },
   "github": {
@@ -48,8 +60,8 @@
     "title": "Projetos em Destaque",
     "viewAll": "Ver Todos os Projetos",
     "ecommerce": {
-      "title": "Plataforma E-Commerce",
-      "description": "Uma solução e-commerce full-stack construída com Next.js e integração Stripe"
+      "title": "Facilize",
+      "description": "Plataforma completa de gestão de negócios que conecta prestadores de serviços aos seus clientes."
     },
     "taskManagement": {
       "title": "App de Gerenciamento de Tarefas",
@@ -75,7 +87,33 @@
     "filterBy": "Filtrar por categoria",
     "facilize": {
       "description": "Plataforma completa de gestão de negócios que conecta prestadores de serviços aos seus clientes."
+    },
+    "netflix": {
+      "description": "Um clone visual da Netflix."
+    },
+    "portfolio": {
+      "description": "Um site de portfólio moderno e responsivo com animações interativas e rolagem suave."
+    },
+    "pokedex": {
+      "description": "Uma pokedex moderna e responsiva feita em Angular."
+    }
+  },
+  "contactPage": {
+    "title": "Entre em Contato",
+    "subtitle": "Estou sempre interessado em ouvir sobre novos projetos e oportunidades.",
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "sendButton": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Falha ao enviar mensagem. Tente novamente."
+    },
+    "info": {
+      "emailLabel": "Envie um E-mail",
+      "socialsLabel": "Conectar"
     }
   }
 }
-

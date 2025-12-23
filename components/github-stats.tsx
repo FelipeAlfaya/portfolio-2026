@@ -91,9 +91,9 @@ export function GitHubStats({ username }: GitHubStatsProps) {
   return (
     <div className='space-y-8'>
       <div className='grid md:grid-cols-3 gap-6'>
-        <Card className='bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300'>
+        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium text-gray-300'>
+            <CardTitle className='text-sm font-medium'>
               {t.github.repositories}
             </CardTitle>
             <Github className='h-4 w-4 text-blue-400' />
@@ -102,16 +102,16 @@ export function GitHubStats({ username }: GitHubStatsProps) {
             {loading ? (
               <Skeleton className='h-8 w-20' />
             ) : (
-              <div className='text-2xl font-bold text-white'>
+              <div className='text-2xl font-bold'>
                 {data?.totalRepos || 0}
               </div>
             )}
           </CardContent>
         </Card>
 
-        <Card className='bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300'>
+        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium text-gray-300'>
+            <CardTitle className='text-sm font-medium'>
               {t.github.commits}
             </CardTitle>
             <Calendar className='h-4 w-4 text-purple-400' />
@@ -120,16 +120,16 @@ export function GitHubStats({ username }: GitHubStatsProps) {
             {loading ? (
               <Skeleton className='h-8 w-20' />
             ) : (
-              <div className='text-2xl font-bold text-white'>
+              <div className='text-2xl font-bold'>
                 {data?.totalCommits || 0}
               </div>
             )}
           </CardContent>
         </Card>
 
-        <Card className='bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300'>
+        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium text-gray-300'>
+            <CardTitle className='text-sm font-medium'>
               {t.github.languages}
             </CardTitle>
             <Code2 className='h-4 w-4 text-pink-400' />
@@ -138,7 +138,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
             {loading ? (
               <Skeleton className='h-8 w-20' />
             ) : (
-              <div className='text-2xl font-bold text-white'>
+              <div className='text-2xl font-bold'>
                 {languagesData.length}
               </div>
             )}
@@ -147,29 +147,17 @@ export function GitHubStats({ username }: GitHubStatsProps) {
       </div>
 
       <div className='grid gap-8'>
-        <Card className='bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300'>
+        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
           <CardHeader>
-            <CardTitle className='text-white'>{t.github.mostUsed}</CardTitle>
+            <CardTitle>{t.github.mostUsed}</CardTitle>
           </CardHeader>
           <CardContent>
             {loading ? (
               <div className='space-y-6'>
                 <Tabs defaultValue='bar' className='w-full'>
-                  <TabsList className='grid w-full grid-cols-2 bg-white/5 border border-white/10'>
-                    <TabsTrigger
-                      value='bar'
-                      className='data-[state=active]:bg-white/10 data-[state=active]:text-white text-gray-400'
-                      disabled
-                    >
-                      {t.github.barChart}
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value='pie'
-                      className='data-[state=active]:bg-white/10 data-[state=active]:text-white text-gray-400'
-                      disabled
-                    >
-                      {t.github.pieChart}
-                    </TabsTrigger>
+                  <TabsList className='grid w-full grid-cols-2'>
+                    <TabsTrigger value='bar'>{t.github.barChart}</TabsTrigger>
+                    <TabsTrigger value='pie'>{t.github.pieChart}</TabsTrigger>
                   </TabsList>
                   <TabsContent value='bar' className='mt-4'>
                     <div className='relative h-[300px] flex items-center justify-center'>
@@ -295,19 +283,9 @@ export function GitHubStats({ username }: GitHubStatsProps) {
             ) : (
               <div className='space-y-6'>
                 <Tabs defaultValue='bar' className='w-full'>
-                  <TabsList className='grid w-full grid-cols-2 bg-white/5 border border-white/10'>
-                    <TabsTrigger
-                      value='bar'
-                      className='data-[state=active]:bg-white/10 data-[state=active]:text-white text-gray-400'
-                    >
-                      {t.github.barChart}
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value='pie'
-                      className='data-[state=active]:bg-white/10 data-[state=active]:text-white text-gray-400'
-                    >
-                      {t.github.pieChart}
-                    </TabsTrigger>
+                  <TabsList className='grid w-full grid-cols-2'>
+                    <TabsTrigger value='bar'>{t.github.barChart}</TabsTrigger>
+                    <TabsTrigger value='pie'>{t.github.pieChart}</TabsTrigger>
                   </TabsList>
                   <TabsContent value='bar' className='mt-4'>
                     <ResponsiveContainer width='100%' height={300}>
@@ -363,38 +341,40 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                           data={pieChartData}
                           cx='50%'
                           cy='50%'
-                          labelLine={true}
-                          label={({ name, percentage }) => {
-                            if (parseFloat(percentage) > 5) {
-                              return `${name}: ${percentage}%`
-                            }
-                            return ''
-                          }}
+                          labelLine={false}
                           outerRadius={100}
+                          innerRadius={60}
+                          paddingAngle={5}
+                          cornerRadius={4}
                           fill='#8884d8'
                           dataKey='value'
+                          stroke='none'
                         >
                           {pieChartData.map((entry, index) => (
                             <Cell
                               key={`cell-${index}`}
                               fill={COLORS[index % COLORS.length]}
+                              className='stroke-transparent hover:opacity-80 transition-opacity duration-300 cursor-pointer'
                             />
                           ))}
                         </Pie>
                         <Tooltip
                           contentStyle={{
-                            backgroundColor: 'rgba(0, 0, 0, 0.95)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                            borderRadius: '8px',
+                            backgroundColor: 'rgba(23, 23, 23, 0.9)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            borderRadius: '12px',
+                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
                             color: '#fff',
                             padding: '12px',
                           }}
                           itemStyle={{
                             color: '#fff',
                             fontSize: '14px',
+                            fontWeight: '500',
                           }}
                           labelStyle={{
-                            color: '#fff',
+                            color: '#e5e7eb',
                             fontSize: '14px',
                             fontWeight: '600',
                             marginBottom: '4px',
@@ -404,10 +384,8 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                             name: string,
                             props: any
                           ) => [
-                            `${(value / 1024).toFixed(1)} KB (${
-                              props.payload.percentage
-                            }%)`,
-                            'Bytes',
+                            `${(value / 1024).toFixed(1)} KB`,
+                            `${props.payload.percentage}%`
                           ]}
                         />
                         <Legend
@@ -430,7 +408,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                   {languagesWithPercentage.map((lang, index) => (
                     <div
                       key={lang.fullName}
-                      className='flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/20 hover:bg-white/15 transition-colors'
+                      className='flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary text-secondary-foreground border border-border hover:bg-secondary/80 transition-colors'
                     >
                       <div
                         className='w-3 h-3 rounded-full'
@@ -438,10 +416,10 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                           backgroundColor: COLORS[index % COLORS.length],
                         }}
                       />
-                      <span className='text-sm text-white font-medium'>
+                      <span className='text-sm font-medium'>
                         {lang.fullName}
                       </span>
-                      <span className='text-xs text-gray-300 font-semibold'>
+                      <span className='text-xs text-muted-foreground font-semibold'>
                         {lang.percentage}%
                       </span>
                     </div>

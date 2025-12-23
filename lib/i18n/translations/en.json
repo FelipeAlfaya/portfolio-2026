@@ -6,14 +6,14 @@
   },
   "hero": {
     "title": "Felipe Alfaya",
-    "subtitle": "Full-Stack Developer crafting digital experiences that blend creativity with functionality",
+    "subtitle": "A Web Developer passionate about creating digital solutions that make a difference.",
     "viewWork": "View My Work",
     "downloadCV": "Download CV"
   },
   "about": {
     "title": "About Me",
-    "description1": "I'm a passionate full-stack developer with 3+ years of experience creating digital solutions that make a difference. I specialize in modern web technologies and have a keen eye for design and user experience.",
-    "description2": "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community."
+    "description1": "I am a web developer with 3+ years of experience creating digital solutions that make a difference. I have proficiency in modern web technologies and a keen eye for design and user experience.",
+    "description2": "I work on developing efficient and functional interfaces, as well as business logic and backend development, always striving for clean, scalable, and optimized code."
   },
   "services": {
     "title": "What I Do",
@@ -29,6 +29,18 @@
     "mobile": {
       "title": "Mobile Development",
       "description": "Building cross-platform mobile applications with React Native and Flutter."
+    },
+    "backend": {
+      "title": "Software Architecture",
+      "description": "Planning and structuring robust, scalable, and high-performance systems."
+    },
+    "api": {
+      "title": "API Development",
+      "description": "Creation of efficient, secure, and well-documented RESTful and GraphQL APIs."
+    },
+    "devops": {
+      "title": "Cloud Solutions (AWS)",
+      "description": "Implementation of cloud infrastructure, CI/CD, and serverless using AWS services."
     }
   },
   "github": {
@@ -75,7 +87,33 @@
     "filterBy": "Filter by category",
     "facilize": {
       "description": "Complete business management platform that connects service providers to their clients."
+    },
+    "netflix": {
+      "description": "A visual Netflix clone."
+    },
+    "portfolio": {
+      "description": "A modern, responsive portfolio website with interactive animations and smooth scrolling."
+    },
+    "pokedex": {
+      "description": "A modern, responsive pokedex made in Angular."
+    }
+  },
+  "contactPage": {
+    "title": "Get in Touch",
+    "subtitle": "I'm always interested in hearing about new projects and opportunities.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "sendButton": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "info": {
+      "emailLabel": "Email Me",
+      "socialsLabel": "Connect"
     }
   }
 }
-
