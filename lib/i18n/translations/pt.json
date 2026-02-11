@@ -76,7 +76,7 @@
     "getInTouch": "Entre em Contato"
   },
   "footer": {
-    "copyright": "© 2025 Felipe Alfaya. Todos os direitos reservados."
+    "copyright": "© 2026 Felipe Alfaya. Todos os direitos reservados."
   },
   "projectsPage": {
     "title": "Meus Projetos",
@@ -106,6 +106,10 @@
       "email": "E-mail",
       "subject": "Assunto",
       "message": "Mensagem",
+      "placeholderName": "Seu nome",
+      "placeholderEmail": "seu@email.com",
+      "placeholderSubject": "Assunto do projeto",
+      "placeholderMessage": "Conte-me sobre seu projeto...",
       "sendButton": "Enviar Mensagem",
       "sending": "Enviando...",
       "success": "Mensagem enviada com sucesso!",

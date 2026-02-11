@@ -64,14 +64,26 @@ export default function ContactPage() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        toast.error(data.error || t.contactPage.form.error)
+        return
+      }
       toast.success(t.contactPage.form.success)
       form.reset()
-    }, 1500)
+    } catch {
+      toast.error(t.contactPage.form.error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -155,7 +167,7 @@ export default function ContactPage() {
                         <FormItem>
                           <FormLabel>{t.contactPage.form.name}</FormLabel>
                           <FormControl>
-                            <Input placeholder='Your name' {...field} className='bg-background/50 border-input' />
+                            <Input placeholder={t.contactPage.form.placeholderName} {...field} className='bg-background/50 border-input' />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -168,7 +180,7 @@ export default function ContactPage() {
                         <FormItem>
                           <FormLabel>{t.contactPage.form.email}</FormLabel>
                           <FormControl>
-                            <Input placeholder='your@email.com' {...field} className='bg-background/50 border-input' />
+                            <Input placeholder={t.contactPage.form.placeholderEmail} {...field} className='bg-background/50 border-input' />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -181,7 +193,7 @@ export default function ContactPage() {
                         <FormItem>
                           <FormLabel>{t.contactPage.form.subject}</FormLabel>
                           <FormControl>
-                            <Input placeholder='Project inquiry' {...field} className='bg-background/50 border-input' />
+                            <Input placeholder={t.contactPage.form.placeholderSubject} {...field} className='bg-background/50 border-input' />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -195,7 +207,7 @@ export default function ContactPage() {
                           <FormLabel>{t.contactPage.form.message}</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder='Tell me about your project...'
+                              placeholder={t.contactPage.form.placeholderMessage}
                               className='min-h-[150px] bg-background/50 border-input resize-none'
                               {...field}
                             />

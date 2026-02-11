@@ -19,17 +19,29 @@ interface GitHubStats {
 const GITHUB_API_BASE = 'https://api.github.com'
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
+function authHeader(): string | null {
+  if (!GITHUB_TOKEN) return null
+  if (GITHUB_TOKEN.startsWith('ghp_')) return `token ${GITHUB_TOKEN}`
+  return `Bearer ${GITHUB_TOKEN}`
+}
+
 async function fetchWithAuth(url: string) {
   const headers: HeadersInit = {
     Accept: 'application/vnd.github.v3+json',
   }
-
-  if (GITHUB_TOKEN) {
-    headers.Authorization = `token ${GITHUB_TOKEN}`
-  }
+  const auth = authHeader()
+  if (auth) headers.Authorization = auth
 
   const response = await fetch(url, { headers })
   return response
+}
+
+async function getAuthenticatedUserLogin(): Promise<string | null> {
+  if (!GITHUB_TOKEN) return null
+  const response = await fetchWithAuth(`${GITHUB_API_BASE}/user`)
+  if (!response.ok) return null
+  const data = await response.json()
+  return data.login ?? null
 }
 
 async function getRepositories(username: string) {
@@ -37,10 +49,18 @@ async function getRepositories(username: string) {
   let page = 1
   const perPage = 100
 
+  const tokenUser = await getAuthenticatedUserLogin()
+  const useAuthenticatedRepos =
+    GITHUB_TOKEN &&
+    tokenUser &&
+    tokenUser.toLowerCase() === username.trim().toLowerCase()
+
   while (true) {
-    const response = await fetchWithAuth(
-      `${GITHUB_API_BASE}/users/${username}/repos?per_page=${perPage}&page=${page}&sort=updated`
-    )
+    const url = useAuthenticatedRepos
+      ? `${GITHUB_API_BASE}/user/repos?per_page=${perPage}&page=${page}&sort=updated&affiliation=owner,collaborator,organization_member&visibility=all`
+      : `${GITHUB_API_BASE}/users/${username}/repos?per_page=${perPage}&page=${page}&sort=updated`
+
+    const response = await fetchWithAuth(url)
 
     if (!response.ok) {
       if (response.status === 404) {
@@ -61,16 +81,15 @@ async function getRepositories(username: string) {
   return repos
 }
 
-async function getLanguagesForRepos(
-  username: string,
-  repos: any[]
-): Promise<LanguageStats> {
+async function getLanguagesForRepos(repos: any[]): Promise<LanguageStats> {
   const languageStats: LanguageStats = {}
 
   for (const repo of repos.slice(0, 30)) {
+    const owner = repo.owner?.login ?? repo.owner
+    if (!owner) continue
     try {
       const response = await fetchWithAuth(
-        `${GITHUB_API_BASE}/repos/${username}/${repo.name}/languages`
+        `${GITHUB_API_BASE}/repos/${owner}/${repo.name}/languages`,
       )
 
       if (response.ok) {
@@ -87,18 +106,17 @@ async function getLanguagesForRepos(
   return languageStats
 }
 
-async function getCommitActivity(
-  username: string,
-  repos: any[]
-): Promise<CommitActivity[]> {
+async function getCommitActivity(repos: any[]): Promise<CommitActivity[]> {
   const commitMap = new Map<string, number>()
   const oneYearAgo = new Date()
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
 
   for (const repo of repos.slice(0, 10)) {
+    const owner = repo.owner?.login ?? repo.owner
+    if (!owner) continue
     try {
       const response = await fetchWithAuth(
-        `${GITHUB_API_BASE}/repos/${username}/${repo.name}/commits?since=${oneYearAgo.toISOString()}&per_page=100`
+        `${GITHUB_API_BASE}/repos/${owner}/${repo.name}/commits?since=${oneYearAgo.toISOString()}&per_page=100`,
       )
 
       if (response.ok) {
@@ -142,14 +160,14 @@ export async function GET(request: NextRequest) {
     if (!username) {
       return NextResponse.json(
         { error: 'Username é obrigatório' },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
     const repos = await getRepositories(username)
     const [languages, commitActivity] = await Promise.all([
-      getLanguagesForRepos(username, repos),
-      getCommitActivity(username, repos),
+      getLanguagesForRepos(repos),
+      getCommitActivity(repos),
     ])
 
     const totalCommits = commitActivity.reduce((sum, day) => sum + day.count, 0)
@@ -166,11 +184,9 @@ export async function GET(request: NextRequest) {
     console.error('Erro ao buscar stats do GitHub:', error)
     return NextResponse.json(
       {
-        error:
-          error instanceof Error ? error.message : 'Erro ao buscar dados',
+        error: error instanceof Error ? error.message : 'Erro ao buscar dados',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
-

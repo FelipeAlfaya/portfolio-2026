@@ -37,12 +37,14 @@ export function HeroSection() {
             {t.hero.subtitle}
           </p>
           <div className='flex items-center justify-center gap-4 mb-12'>
-            <Button
-              size='lg'
-              className='bg-blue-600 hover:bg-blue-700 text-white dark:text-white'
-            >
-              {t.hero.viewWork}
-            </Button>
+            <Link href='/projects'>
+              <Button
+                size='lg'
+                className='bg-blue-600 hover:bg-blue-700 text-white dark:text-white'
+              >
+                {t.hero.viewWork}
+              </Button>
+            </Link>
             <Button
               variant='outline'
               size='lg'
