@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Felipe Alfaya - Web Developer',
   description:
     'Web Developer passionate about creating engaging and user-friendly digital experiences',
+  icons: {
+    icon: '/icon.webp',
+  },
 }
 
 export default function RootLayout({

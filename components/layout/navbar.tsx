@@ -8,6 +8,7 @@ import { useTranslation } from '@/hooks/use-translation'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
+import { CodeXml } from 'lucide-react'
 
 export function Navbar() {
   const { t } = useTranslation()
@@ -53,11 +54,15 @@ export function Navbar() {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
             ? 'bg-background/80 backdrop-blur-md border-b border-white/10 py-4'
-            : 'bg-transparent py-6'
+            : 'bg-transparent py-6',
         )}
       >
         <div className='max-w-6xl mx-auto px-6 flex items-center justify-between'>
-          <Link href='/' className='text-2xl font-bold font-heading z-50 relative tracking-tight'>
+          <Link
+            href='/'
+            className='flex items-center gap-2 text-2xl font-bold font-heading z-50 relative tracking-tight'
+          >
+            <CodeXml className='size-7' />
             Felipe Alfaya
           </Link>
 
@@ -74,7 +79,7 @@ export function Navbar() {
                     'text-sm font-medium transition-colors relative z-10',
                     pathname === link.href
                       ? 'text-foreground'
-                      : 'text-muted-foreground group-hover:text-foreground'
+                      : 'text-muted-foreground group-hover:text-foreground',
                   )}
                 >
                   {link.label}
@@ -89,11 +94,15 @@ export function Navbar() {
                 )}
               </Link>
             ))}
-            
+
             <div className='flex items-center gap-4 ml-4 pl-4 border-l border-border/50'>
               <LanguageSwitcher />
               <Link href='/contact'>
-                <Button variant="outline" size='sm' className='rounded-full px-6 hover:bg-primary hover:text-primary-foreground transition-all duration-300'>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  className='rounded-full px-6 hover:bg-primary hover:text-primary-foreground transition-all duration-300'
+                >
                   {t.nav.contact}
                 </Button>
               </Link>
@@ -128,10 +137,10 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ y: "-100%" }}
-            animate={{ y: "0%" }}
-            exit={{ y: "-100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            initial={{ y: '-100%' }}
+            animate={{ y: '0%' }}
+            exit={{ y: '-100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className='fixed inset-0 z-[40] bg-background flex flex-col items-center justify-center space-y-8 md:hidden'
             style={{ height: '100dvh' }}
           >
@@ -149,7 +158,7 @@ export function Navbar() {
                       'text-4xl font-bold tracking-tight transition-colors hover:text-primary',
                       pathname === link.href
                         ? 'text-primary'
-                        : 'text-foreground/80'
+                        : 'text-foreground/80',
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -157,18 +166,21 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.4 }}
                 className='flex flex-col items-center gap-8 mt-8'
               >
-                <div className="scale-125">
+                <div className='scale-125'>
                   <LanguageSwitcher />
                 </div>
                 <Link href='/contact' onClick={() => setIsOpen(false)}>
-                  <Button size='lg' className='rounded-full px-10 py-6 text-xl shadow-lg'>
+                  <Button
+                    size='lg'
+                    className='rounded-full px-10 py-6 text-xl shadow-lg'
+                  >
                     {t.nav.contact}
                   </Button>
                 </Link>
@@ -180,3 +192,4 @@ export function Navbar() {
     </>
   )
 }
+
