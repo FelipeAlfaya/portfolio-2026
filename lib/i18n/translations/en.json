@@ -136,5 +136,32 @@
     "heading": "Page Not Found",
     "description": "It seems you've wandered into the digital void. The page you're looking for doesn't exist or has been moved.",
     "backHome": "Return to Reality"
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Where I Worked",
+    "subtitle": "My professional and academic journey so far",
+    "present": "Present",
+    "facilize": {
+      "role": "Founder & Lead Developer",
+      "description": "Vision and technical leadership of Facilize, an integrated SaaS platform (ERP/CRM) for service providers. Developed multi-account financial management, appointment engines with public portals, B2B/B2C CRM, staff commission flows, and automated tax calculators."
+    },
+    "senai": {
+      "role": "Intern ~ Dev I",
+      "description": "Worked on multiple projects with Golang, Next.js, Nest.js, and PostgreSQL. Developed APIs, fixed bugs, modeled databases, and deployed to AWS/Docker in an Agile SCRUM environment."
+    },
+    "freelance": {
+      "role": "Freelance Developer",
+      "description": "Delivered full-stack solutions using TypeScript, Nest.js, Express, Next.js, Angular, and Docker. Designed and implemented robust APIs with PostgreSQL and MongoDB."
+    },
+    "ucsal": {
+      "institution": "Catholic University of Salvador",
+      "degree": "Associate in Software Development",
+      "description": "Systems Analysis and Development focused on software engineering and application architecture."
+    },
+    "senaiEdu": {
+      "degree": "Technical Degree in Systems Development",
+      "description": "Technical education focused on web development, programming logic, and databases."
+    }
   }
 }

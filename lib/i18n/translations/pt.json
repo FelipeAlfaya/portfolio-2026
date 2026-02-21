@@ -136,5 +136,32 @@
     "heading": "Página não encontrada",
     "description": "Parece que você vagou pelo vazio digital. A página que você está procurando não existe ou foi movida.",
     "backHome": "Voltar para a Realidade"
+  },
+  "experience": {
+    "label": "Experiência",
+    "title": "Onde Trabalhei",
+    "subtitle": "Minha trajetória profissional e acadêmica até aqui",
+    "present": "Atual",
+    "facilize": {
+      "role": "Fundador & Lead Developer",
+      "description": "Idealização e liderança técnica da Facilize, uma plataforma SaaS integrada (ERP/CRM) para prestadores de serviços. Desenvolvi módulos de gestão financeira multicontas, motor de agendamentos com portal público, CRM B2B/B2C, fluxo de comissões para equipes e calculadoras tributárias automatizadas."
+    },
+    "senai": {
+      "role": "Estagiário ~ Dev I",
+      "description": "Atuação em múltiplos projetos com tecnologias como Golang, Next.js, Nest.js e PostgreSQL. Desenvolvimento de APIs, correção de bugs, modelagem de banco de dados e deploy em AWS/Docker em ambiente Agile SCRUM."
+    },
+    "freelance": {
+      "role": "Desenvolvedor Freelance",
+      "description": "Entrega de soluções full-stack utilizando TypeScript, Nest.js, Express, Next.js, Angular e Docker. Projeto e implementação de APIs robustas com PostgreSQL e MongoDB."
+    },
+    "ucsal": {
+      "institution": "Universidade Católica do Salvador",
+      "degree": "Tecnólogo em ADS",
+      "description": "Análise e Desenvolvimento de Sistemas com foco em engenharia de software e arquitetura de aplicações."
+    },
+    "senaiEdu": {
+      "degree": "Técnico em Desenvolvimento de Sistemas",
+      "description": "Formação técnica com foco em desenvolvimento web, lógica de programação e banco de dados."
+    }
   }
 }
