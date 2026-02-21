@@ -91,7 +91,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
   return (
     <div className='space-y-8'>
       <div className='grid md:grid-cols-3 gap-6'>
-        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
+        <Card className='card-glass hover:bg-accent/50 transition-all duration-300'>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
             <CardTitle className='text-sm font-medium'>
               {t.github.repositories}
@@ -109,7 +109,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
           </CardContent>
         </Card>
 
-        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
+        <Card className='card-glass hover:bg-accent/50 transition-all duration-300'>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
             <CardTitle className='text-sm font-medium'>
               {t.github.commits}
@@ -127,7 +127,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
           </CardContent>
         </Card>
 
-        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
+        <Card className='card-glass hover:bg-accent/50 transition-all duration-300'>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
             <CardTitle className='text-sm font-medium'>
               {t.github.languages}
@@ -147,7 +147,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
       </div>
 
       <div className='grid gap-8'>
-        <Card className='bg-card border-border hover:bg-accent transition-all duration-300'>
+        <Card className='card-glass transition-all duration-300'>
           <CardHeader>
             <CardTitle>{t.github.mostUsed}</CardTitle>
           </CardHeader>
@@ -300,11 +300,13 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                           axisLine={{ stroke: '#374151' }}
                         />
                         <Tooltip
+                          cursor={{ fill: 'rgba(255, 255, 255, 0.03)', radius: 8 }}
                           contentStyle={{
-                            backgroundColor: 'rgba(0, 0, 0, 0.95)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                            borderRadius: '8px',
-                            color: '#fff',
+                            backgroundColor: 'rgba(10, 10, 10, 0.8)',
+                            backdropFilter: 'blur(8px)',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            borderRadius: '12px',
+                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)',
                             padding: '12px',
                           }}
                           itemStyle={{
@@ -408,7 +410,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                   {languagesWithPercentage.map((lang, index) => (
                     <div
                       key={lang.fullName}
-                      className='flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary text-secondary-foreground border border-border hover:bg-secondary/80 transition-colors'
+                      className='flex items-center gap-2 px-3 py-1.5 rounded-md badge-violet hover:bg-white/10 transition-colors'
                     >
                       <div
                         className='w-3 h-3 rounded-full'

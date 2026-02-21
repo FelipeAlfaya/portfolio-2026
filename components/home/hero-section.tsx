@@ -5,11 +5,10 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { useTranslation } from '@/hooks/use-translation'
-import { useTypewriter } from '@/hooks/use-typewriter'
+import TrueFocus from '@/components/ui/true-focus'
 
 export function HeroSection() {
   const { t, language } = useTranslation()
-  const typewriterText = useTypewriter(t.hero.title, 100)
 
   const handleDownloadCV = () => {
     const cvPath =
@@ -24,14 +23,19 @@ export function HeroSection() {
   }
 
   return (
-    <section className='pt-32 pb-20 px-6'>
-      <div className='max-w-6xl mx-auto'>
-        <div className='text-center mb-16'>
-          <div className='min-h-[120px] md:min-h-[160px] flex items-center justify-center'>
-            <h1 className='text-6xl md:text-8xl font-bold mb-6 text-blue-600 py-2 text-glow-blue'>
-              {typewriterText}
-              <span className='animate-pulse'>|</span>
-            </h1>
+    <section className='relative min-h-screen flex flex-col justify-center pt-20 pb-20 px-6 overflow-hidden'>
+      <div className='relative z-10 max-w-6xl mx-auto w-full'>
+        <div className='text-center mb-0 mt-8'>
+          <div className='min-h-[120px] md:min-h-[160px] flex items-center justify-center mb-6'>
+            <TrueFocus 
+              sentence={t.hero.title}
+              manualMode={false}
+              blurAmount={5}
+              borderColor="#5227FF"
+              animationDuration={0.5}
+              pauseBetweenAnimations={1}
+              className="justify-center"
+            />
           </div>
           <p className='text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto'>
             {t.hero.subtitle}
@@ -40,7 +44,7 @@ export function HeroSection() {
             <Link href='/projects'>
               <Button
                 size='lg'
-                className='bg-blue-600 hover:bg-blue-700 text-white dark:text-white'
+                className='btn-gradient text-white dark:text-white border-0'
               >
                 {t.hero.viewWork}
               </Button>

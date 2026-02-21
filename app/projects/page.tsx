@@ -20,22 +20,13 @@ import {
   ArrowLeft,
   Mail,
 } from 'lucide-react'
-import { SpotlightCursor } from '@/components/spotlight-cursor'
 import { useTranslation } from '@/hooks/use-translation'
 import Image from 'next/image'
+import { PageBackground } from '@/components/page-background'
+import TrueFocus from '@/components/ui/true-focus'
 
 export default function ProjectsPage() {
   const { t } = useTranslation()
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
   const projects = [
     {
       title: 'Facilize',
@@ -89,14 +80,12 @@ export default function ProjectsPage() {
   ]
 
   return (
-    <div className='min-h-screen bg-background text-foreground relative overflow-hidden bg-grid-blue'>
-      <SpotlightCursor mousePosition={mousePosition} />
-
+    <PageBackground showDarkVeil={true}>
       <Navbar />
 
       {/* Header */}
-      <section className='pt-32 pb-12 px-6'>
-        <div className='max-w-6xl mx-auto'>
+      <section className='relative pt-32 pb-12 px-6 overflow-hidden'>
+        <div className='relative z-10 max-w-6xl mx-auto'>
           <Link
             href='/'
             className='inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8'
@@ -104,9 +93,17 @@ export default function ProjectsPage() {
             <ArrowLeft className='w-4 h-4 mr-2' />
             {t.projectsPage.backToHome}
           </Link>
-          <h1 className='text-5xl md:text-6xl py-2 font-bold mb-6 text-blue-600 text-glow-blue'>
-            {t.projectsPage.title}
-          </h1>
+          <div className='mb-6'>
+            <TrueFocus 
+              sentence={t.projectsPage.title}
+              manualMode={false}
+              blurAmount={5}
+              borderColor="#5227FF"
+              animationDuration={0.5}
+              pauseBetweenAnimations={1}
+              className="justify-center"
+            />
+          </div>
           <p className='text-xl text-muted-foreground max-w-3xl'>
             {t.projectsPage.subtitle}
           </p>
@@ -122,7 +119,7 @@ export default function ProjectsPage() {
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className='bg-card border-border hover:bg-accent transition-all duration-300 group'
+                className='card-glass hover:bg-accent/50 transition-all duration-300 group'
               >
                 <CardHeader>
                   <div
@@ -156,7 +153,7 @@ export default function ProjectsPage() {
                       project.image
                     )}
                   </div>
-                  <CardTitle className='text-card-foreground group-hover:text-blue-400 transition-colors'>
+                  <CardTitle className='text-card-foreground group-hover:text-violet-400 transition-colors'>
                     {project.title}
                   </CardTitle>
                   <CardDescription className='text-muted-foreground'>
@@ -169,7 +166,7 @@ export default function ProjectsPage() {
                       <Badge
                         key={tech}
                         variant='secondary'
-                        className='bg-secondary text-secondary-foreground border-border text-xs'
+                        className='badge-violet text-xs'
                       >
                         {tech}
                       </Badge>
@@ -203,8 +200,8 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className='py-20 px-6 border-t border-border'>
+      <section className='py-20 px-6'>
+        <div className='section-divider mb-20' />
         <div className='max-w-4xl mx-auto text-center'>
           <h2 className='text-4xl font-bold mb-6'>
             {t.contact.title}
@@ -215,7 +212,7 @@ export default function ProjectsPage() {
           <Link href='/contact'>
             <Button
               size='lg'
-              className='bg-blue-600 hover:bg-blue-700 text-white dark:text-white'
+              className='btn-gradient text-white dark:text-white border-0'
             >
               <Mail className='w-5 h-5 mr-2' />
               {t.contact.getInTouch}
@@ -225,7 +222,7 @@ export default function ProjectsPage() {
       </section>
 
       <Footer />
-    </div>
+    </PageBackground>
   )
 }
 

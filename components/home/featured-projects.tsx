@@ -71,7 +71,7 @@ export function FeaturedProjects() {
           ].map((project, index) => (
             <Card
               key={index}
-              className='bg-card border-border hover:bg-accent transition-all duration-300 group'
+              className='card-glass hover:bg-accent/50 transition-all duration-300 group'
             >
               <CardHeader>
                 <div
@@ -103,7 +103,7 @@ export function FeaturedProjects() {
                     />
                   ) : null}
                 </div>
-                <CardTitle className='text-card-foreground group-hover:text-blue-400 transition-colors'>
+                <CardTitle className='text-card-foreground group-hover:text-violet-400 transition-colors'>
                   {project.title}
                 </CardTitle>
                 <CardDescription className='text-muted-foreground'>
@@ -116,7 +116,7 @@ export function FeaturedProjects() {
                     <Badge
                       key={tech}
                       variant='secondary'
-                      className='bg-secondary text-secondary-foreground border-border'
+                      className='badge-violet text-xs'
                     >
                       {tech}
                     </Badge>

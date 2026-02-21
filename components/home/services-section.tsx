@@ -54,10 +54,10 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className='bg-card border-border hover:bg-accent transition-all duration-300'
+              className='card-glass hover:bg-accent/50 transition-all duration-300'
             >
               <CardHeader>
-                <div className='text-blue-400 mb-4'>{service.icon}</div>
+                <div className='text-violet-500 mb-4'>{service.icon}</div>
                 <CardTitle className='text-card-foreground'>
                   {service.title}
                 </CardTitle>

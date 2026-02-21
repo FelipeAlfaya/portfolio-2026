@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ArrowLeft, Mail, Github, Linkedin, Send } from 'lucide-react'
-import { SpotlightCursor } from '@/components/spotlight-cursor'
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { useTranslation } from '@/hooks/use-translation'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,6 +23,8 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { toast } from 'sonner'
+import { PageBackground } from '@/components/page-background'
+import TrueFocus from '@/components/ui/true-focus'
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -42,17 +43,7 @@ const formSchema = z.object({
 
 export default function ContactPage() {
   const { t } = useTranslation()
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -87,14 +78,12 @@ export default function ContactPage() {
   }
 
   return (
-    <div className='min-h-screen bg-background text-foreground relative overflow-hidden bg-grid-blue'>
-      <SpotlightCursor mousePosition={mousePosition} />
-
+    <PageBackground showDarkVeil={true}>
       <Navbar />
 
       {/* Content */}
-      <section className='pt-32 pb-20 px-6'>
-        <div className='max-w-6xl mx-auto'>
+      <section className='relative min-h-[100dvh] pt-24 pb-12 px-6 flex items-center overflow-hidden'>
+        <div className='relative z-10 max-w-6xl mx-auto w-full'>
           <Link
             href='/'
             className='inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8'
@@ -106,45 +95,53 @@ export default function ContactPage() {
           <div className='grid lg:grid-cols-2 gap-12 items-start'>
             {/* Contact Info */}
             <div>
-              <h1 className='text-5xl md:text-6xl font-bold mb-6 text-blue-600 text-glow-blue'>
-                {t.contactPage.title}
-              </h1>
+              <div className='mb-6'>
+                <TrueFocus 
+                  sentence={t.contactPage.title}
+                  manualMode={false}
+                  blurAmount={5}
+                  borderColor="#5227FF"
+                  animationDuration={0.5}
+                  pauseBetweenAnimations={1}
+                  className="justify-start"
+                />
+              </div>
               <p className='text-xl text-muted-foreground mb-12 max-w-lg'>
                 {t.contactPage.subtitle}
               </p>
 
               <div className='space-y-8'>
                 <div className='flex items-start'>
-                  <div className='w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mr-4 shrink-0'>
+                  <div className='w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-500 mr-4 shrink-0'>
                     <Mail className='w-6 h-6' />
                   </div>
                   <div>
                     <h3 className='text-lg font-semibold mb-1'>{t.contactPage.info.emailLabel}</h3>
-                    <a href="mailto:alfayadev@gmail.com" className='text-muted-foreground hover:text-blue-400 transition-colors'>
+                    <a href="mailto:alfayadev@gmail.com" className='text-muted-foreground hover:text-violet-400 transition-colors'>
                       alfayadev@gmail.com
                     </a>
                   </div>
                 </div>
 
                 <div className='flex items-start'>
-                  <div className='w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 mr-4 shrink-0'>
+                  <div className='w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-500 mr-4 shrink-0'>
                     <Github className='w-6 h-6' />
                   </div>
                   <div>
                     <h3 className='text-lg font-semibold mb-1'>{t.github.title}</h3>
-                    <a href="https://github.com/felipealfaya" target="_blank" rel="noopener noreferrer" className='text-muted-foreground hover:text-blue-400 transition-colors'>
+                    <a href="https://github.com/felipealfaya" target="_blank" rel="noopener noreferrer" className='text-muted-foreground hover:text-violet-400 transition-colors'>
                       github.com/felipealfaya
                     </a>
                   </div>
                 </div>
 
                 <div className='flex items-start'>
-                  <div className='w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600 mr-4 shrink-0'>
+                  <div className='w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-500 mr-4 shrink-0'>
                     <Linkedin className='w-6 h-6' />
                   </div>
                   <div>
                     <h3 className='text-lg font-semibold mb-1'>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/felipealfaya/" target="_blank" rel="noopener noreferrer" className='text-muted-foreground hover:text-blue-400 transition-colors'>
+                    <a href="https://www.linkedin.com/in/felipealfaya/" target="_blank" rel="noopener noreferrer" className='text-muted-foreground hover:text-violet-400 transition-colors'>
                       linkedin.com/in/felipealfaya
                     </a>
                   </div>
@@ -153,7 +150,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <Card className='bg-card/50 backdrop-blur-sm border-border'>
+            <Card className='card-glass'>
               <CardHeader>
                 <CardTitle>{t.contact.getInTouch}</CardTitle>
               </CardHeader>
@@ -219,7 +216,7 @@ export default function ContactPage() {
                     <Button
                       type='submit'
                       disabled={isSubmitting}
-                      className='w-full bg-blue-600 hover:bg-blue-700 text-white dark:text-white'
+                      className='w-full btn-gradient text-white dark:text-white border-0'
                     >
                       {isSubmitting ? (
                         <>
@@ -240,8 +237,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </PageBackground>
   )
 }

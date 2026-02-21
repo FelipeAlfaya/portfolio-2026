@@ -19,7 +19,7 @@ export function ContactCTA() {
         <Link href='/contact'>
           <Button
             size='lg'
-            className='bg-blue-600 hover:bg-blue-700 text-white dark:text-white'
+            className='btn-gradient text-white dark:text-white border-0'
           >
             <Mail className='w-5 h-5 mr-2' />
             {t.contact.getInTouch}
