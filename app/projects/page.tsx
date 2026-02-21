@@ -1,32 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import {
-  ExternalLink,
-  Code,
-  Smartphone,
-  ArrowLeft,
-  Mail,
-} from 'lucide-react'
+import { ArrowLeft, Mail, Smartphone } from 'lucide-react'
 import { useTranslation } from '@/hooks/use-translation'
-import Image from 'next/image'
 import { PageBackground } from '@/components/page-background'
-import TrueFocus from '@/components/ui/true-focus'
+import { ProjectCard } from '@/components/ui/project-card'
 
 export default function ProjectsPage() {
   const { t } = useTranslation()
+
   const projects = [
     {
       title: 'Facilize',
@@ -62,7 +48,7 @@ export default function ProjectsPage() {
     {
       title: 'Old Portfolio Website',
       description: t.projectsPage.portfolio.description,
-      image: <Smartphone className='w-16 h-16 text-white/60' />,
+      image: <Smartphone className='w-16 h-16 text-white/60' /> as React.ReactNode,
       technologies: ['Next.JS', 'TypeScript', 'Tailwind CSS'],
       demoUrl: 'https://felipe-alfaya.vercel.app/',
       category: 'Frontend',
@@ -84,109 +70,45 @@ export default function ProjectsPage() {
       <Navbar />
 
       {/* Header */}
-      <section className='relative pt-32 pb-12 px-6 overflow-hidden'>
-        <div className='relative z-10 max-w-6xl mx-auto'>
+      <section className='relative pt-32 pb-16 px-6 overflow-hidden'>
+        <div className='relative z-10 max-w-7xl mx-auto'>
           <Link
             href='/'
-            className='inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8'
+            className='group inline-flex items-center text-muted-foreground hover:text-violet-400 transition-colors mb-10 text-sm'
           >
-            <ArrowLeft className='w-4 h-4 mr-2' />
+            <ArrowLeft className='w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1' />
             {t.projectsPage.backToHome}
           </Link>
-          <div className='mb-6'>
-            <TrueFocus 
-              sentence={t.projectsPage.title}
-              manualMode={false}
-              blurAmount={5}
-              borderColor="#5227FF"
-              animationDuration={0.5}
-              pauseBetweenAnimations={1}
-              className="justify-center"
-            />
+
+          <div className='max-w-2xl'>
+            <span className='text-violet-400 text-sm font-medium tracking-widest uppercase mb-3 block'>
+              {t.projects.label}
+            </span>
+            <h1 className='text-4xl md:text-6xl font-bold mb-6 leading-tight'>
+              {t.projectsPage.title}
+            </h1>
+            <p className='text-lg text-muted-foreground leading-relaxed'>
+              {t.projectsPage.subtitle}
+            </p>
           </div>
-          <p className='text-xl text-muted-foreground max-w-3xl'>
-            {t.projectsPage.subtitle}
-          </p>
         </div>
       </section>
 
-
-
       {/* Projects Grid */}
-      <section className='pb-20 px-6'>
-        <div className='max-w-6xl mx-auto'>
-          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+      <section className='pb-24 px-6'>
+        <div className='max-w-7xl mx-auto'>
+          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {projects.map((project, index) => (
-              <Card
+              <ProjectCard
                 key={index}
-                className='card-glass hover:bg-accent/50 transition-all duration-300 group'
-              >
-                <CardHeader>
-                  <div
-                    className={`w-full h-48 bg-gradient-to-br ${project.gradient} rounded-lg mb-4 flex items-center justify-center`}
-                  >
-                    {project.image === 'facilize' ? (
-                      <Image
-                        src='/logo-facilize-color.svg'
-                        alt='Facilize Logo'
-                        width={64}
-                        height={64}
-                        className='object-contain'
-                      />
-                    ) : project.image === 'netflix' ? (
-                      <Image
-                        src='/netflix.webp'
-                        alt='Netflix Logo'
-                        width={64}
-                        height={64}
-                        className='object-contain'
-                      />
-                    ) : project.image === 'pokedex' ? (
-                      <Image
-                        src='/pokeball.png'
-                        alt='Pokeball Logo'
-                        width={64}
-                        height={64}
-                        className='object-contain'
-                      />
-                    ) : (
-                      project.image
-                    )}
-                  </div>
-                  <CardTitle className='text-card-foreground group-hover:text-violet-400 transition-colors'>
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className='text-muted-foreground'>
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className='flex flex-wrap gap-2 mb-4'>
-                    {project.technologies.map((tech) => (
-                      <Badge
-                        key={tech}
-                        variant='secondary'
-                        className='badge-violet text-xs'
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className='flex gap-2'>
-                    <Button
-                      size='sm'
-                      variant='outline'
-                      className='border-border hover:bg-accent hover:text-accent-foreground text-foreground bg-transparent flex-1'
-                      asChild
-                    >
-                      <Link href={project.demoUrl} target='_blank'>
-                        <ExternalLink className='w-4 h-4 mr-2' />
-                        Demo
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                techs={project.technologies}
+                demoUrl={project.demoUrl}
+                gradient={project.gradient}
+                category={project.category}
+              />
             ))}
           </div>
 
@@ -200,19 +122,23 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className='py-20 px-6'>
+      {/* Contact CTA */}
+      <section className='py-24 px-6'>
         <div className='section-divider mb-20' />
-        <div className='max-w-4xl mx-auto text-center'>
-          <h2 className='text-4xl font-bold mb-6'>
+        <div className='max-w-3xl mx-auto text-center'>
+          <span className='text-violet-400 text-sm font-medium tracking-widest uppercase mb-4 block'>
+            {t.contact.getInTouch}
+          </span>
+          <h2 className='text-4xl md:text-5xl font-bold mb-6 leading-tight'>
             {t.contact.title}
           </h2>
-          <p className='text-muted-foreground text-lg mb-8 max-w-2xl mx-auto'>
+          <p className='text-muted-foreground text-lg mb-10 max-w-xl mx-auto leading-relaxed'>
             {t.contact.subtitle}
           </p>
           <Link href='/contact'>
             <Button
               size='lg'
-              className='btn-gradient text-white dark:text-white border-0'
+              className='btn-gradient text-white dark:text-white border-0 px-8 py-6 text-base'
             >
               <Mail className='w-5 h-5 mr-2' />
               {t.contact.getInTouch}
@@ -225,4 +151,3 @@ export default function ProjectsPage() {
     </PageBackground>
   )
 }
-

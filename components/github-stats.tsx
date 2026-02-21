@@ -1,10 +1,8 @@
 'use client'
 
 import { useGitHubStats } from '@/hooks/use-github-stats'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Github, Code2, Calendar, Loader2 } from 'lucide-react'
+import { Github, GitCommit, Code2, Loader2 } from 'lucide-react'
 import { useTranslation } from '@/hooks/use-translation'
 import {
   BarChart,
@@ -14,9 +12,6 @@ import {
   Tooltip,
   ResponsiveContainer,
   Cell,
-  PieChart,
-  Pie,
-  Legend,
 } from 'recharts'
 
 interface GitHubStatsProps {
@@ -24,14 +19,14 @@ interface GitHubStatsProps {
 }
 
 const COLORS = [
-  '#3b82f6',
   '#8b5cf6',
+  '#a78bfa',
+  '#7c3aed',
+  '#6d28d9',
+  '#c084fc',
+  '#d946ef',
   '#ec4899',
-  '#10b981',
-  '#f59e0b',
-  '#ef4444',
-  '#06b6d4',
-  '#84cc16',
+  '#f472b6',
 ]
 
 export function GitHubStats({ username }: GitHubStatsProps) {
@@ -72,367 +67,157 @@ export function GitHubStats({ username }: GitHubStatsProps) {
     percentage: ((lang.bytes / totalBytes) * 100).toFixed(1),
   }))
 
-  const recentActivity = data
-    ? data.commitActivity.slice(-30).map((day) => ({
-        date: new Date(day.date).toLocaleDateString('en-US', {
-          month: 'short',
-          day: 'numeric',
-        }),
-        count: day.count,
-      }))
-    : []
-
-  const pieChartData = languagesWithPercentage.map((lang) => ({
-    name: lang.fullName,
-    value: lang.bytes,
-    percentage: lang.percentage,
-  }))
+  const stats = [
+    {
+      icon: <Github className='w-5 h-5' />,
+      label: t.github.repositories,
+      value: data?.totalRepos || 0,
+    },
+    {
+      icon: <GitCommit className='w-5 h-5' />,
+      label: t.github.commits,
+      value: data?.totalCommits || 0,
+    },
+    {
+      icon: <Code2 className='w-5 h-5' />,
+      label: t.github.languages,
+      value: languagesData.length,
+    },
+  ]
 
   return (
-    <div className='space-y-8'>
-      <div className='grid md:grid-cols-3 gap-6'>
-        <Card className='card-glass hover:bg-accent/50 transition-all duration-300'>
-          <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>
-              {t.github.repositories}
-            </CardTitle>
-            <Github className='h-4 w-4 text-blue-400' />
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <Skeleton className='h-8 w-20' />
-            ) : (
-              <div className='text-2xl font-bold'>
-                {data?.totalRepos || 0}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card className='card-glass hover:bg-accent/50 transition-all duration-300'>
-          <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>
-              {t.github.commits}
-            </CardTitle>
-            <Calendar className='h-4 w-4 text-purple-400' />
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <Skeleton className='h-8 w-20' />
-            ) : (
-              <div className='text-2xl font-bold'>
-                {data?.totalCommits || 0}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card className='card-glass hover:bg-accent/50 transition-all duration-300'>
-          <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>
-              {t.github.languages}
-            </CardTitle>
-            <Code2 className='h-4 w-4 text-pink-400' />
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <Skeleton className='h-8 w-20' />
-            ) : (
-              <div className='text-2xl font-bold'>
-                {languagesData.length}
-              </div>
-            )}
-          </CardContent>
-        </Card>
+    <div className='space-y-10'>
+      {/* Inline stat counters */}
+      <div className='flex flex-wrap gap-6 justify-center lg:justify-start'>
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className='flex items-center gap-4 card-glass rounded-2xl px-6 py-4 min-w-[180px]'
+          >
+            <div className='text-violet-400'>{stat.icon}</div>
+            <div>
+              {loading ? (
+                <Skeleton className='h-7 w-14 mb-1' />
+              ) : (
+                <p className='text-2xl font-bold text-foreground'>
+                  {stat.value.toLocaleString()}
+                </p>
+              )}
+              <p className='text-xs text-muted-foreground uppercase tracking-wider'>
+                {stat.label}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className='grid gap-8'>
-        <Card className='card-glass transition-all duration-300'>
-          <CardHeader>
-            <CardTitle>{t.github.mostUsed}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <div className='space-y-6'>
-                <Tabs defaultValue='bar' className='w-full'>
-                  <TabsList className='grid w-full grid-cols-2'>
-                    <TabsTrigger value='bar'>{t.github.barChart}</TabsTrigger>
-                    <TabsTrigger value='pie'>{t.github.pieChart}</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value='bar' className='mt-4'>
-                    <div className='relative h-[300px] flex items-center justify-center'>
-                      <div className='absolute inset-0 flex flex-col justify-end gap-2 px-4 pb-8'>
-                        {[0.8, 0.6, 0.7, 0.5, 0.9, 0.65, 0.75, 0.55].map(
-                          (height, index) => (
-                            <div
-                              key={index}
-                              className='flex items-end gap-2'
-                              style={{ height: '12.5%' }}
-                            >
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.05}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.1}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.15}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.2}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.25}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.3}s`,
-                                }}
-                              />
-                              <Skeleton
-                                className='bg-blue-600/20'
-                                style={{
-                                  width: '12%',
-                                  height: `${height * 100}%`,
-                                  animationDelay: `${index * 0.1 + 0.35}s`,
-                                }}
-                              />
-                            </div>
-                          )
-                        )}
-                      </div>
-                      <div className='absolute inset-0 flex items-center justify-center'>
-                        <div className='flex flex-col items-center gap-3'>
-                          <Loader2 className='w-8 h-8 text-blue-400 animate-spin' />
-                          <p className='text-sm text-gray-400'>
-                            Loading chart data...
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </TabsContent>
-                  <TabsContent value='pie' className='mt-4'>
-                    <div className='relative h-[300px] flex items-center justify-center'>
-                      <div className='relative w-64 h-64'>
-                        <div className='absolute inset-0 rounded-full border-8 border-blue-600/20 animate-pulse' />
-                        <div
-                          className='absolute inset-4 rounded-full border-8 border-blue-600/20 animate-pulse'
-                          style={{ animationDelay: '0.2s' }}
-                        />
-                        <div
-                          className='absolute inset-8 rounded-full border-8 border-blue-600/20 animate-pulse'
-                          style={{ animationDelay: '0.4s' }}
-                        />
-                      </div>
-                      <div className='absolute inset-0 flex items-center justify-center'>
-                        <div className='flex flex-col items-center gap-3'>
-                          <Loader2 className='w-8 h-8 text-blue-400 animate-spin' />
-                          <p className='text-sm text-gray-400'>
-                            Loading chart data...
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-                <div className='flex flex-wrap gap-3'>
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                    <Skeleton
-                      key={i}
-                      className='h-8 w-24 bg-white/5 rounded-md'
+      {/* Chart + language bars side by side */}
+      <div className='flex flex-col lg:flex-row gap-8'>
+        {/* Bar chart */}
+        <div className='flex-1 card-glass rounded-2xl p-6'>
+          <h3 className='text-lg font-semibold text-foreground mb-6'>
+            {t.github.mostUsed}
+          </h3>
+          {loading ? (
+            <div className='h-[280px] flex items-center justify-center'>
+              <div className='flex flex-col items-center gap-3'>
+                <Loader2 className='w-8 h-8 text-violet-400 animate-spin' />
+                <p className='text-sm text-muted-foreground'>
+                  Loading chart data...
+                </p>
+              </div>
+            </div>
+          ) : (
+            <ResponsiveContainer width='100%' height={280}>
+              <BarChart data={languagesWithPercentage}>
+                <XAxis
+                  dataKey='name'
+                  tick={{ fill: '#6b7280', fontSize: 11 }}
+                  axisLine={false}
+                  tickLine={false}
+                />
+                <YAxis hide />
+                <Tooltip
+                  cursor={{ fill: 'rgba(139, 92, 246, 0.06)', radius: 8 }}
+                  contentStyle={{
+                    backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '12px',
+                    boxShadow: '0 16px 32px rgba(0, 0, 0, 0.6)',
+                    padding: '12px 16px',
+                  }}
+                  itemStyle={{ color: '#e5e7eb', fontSize: '13px' }}
+                  labelStyle={{
+                    color: '#fff',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    marginBottom: '4px',
+                  }}
+                  formatter={(value: number) => [`${(value / 1024).toFixed(1)} KB`, 'Size']}
+                />
+                <Bar dataKey='bytes' radius={[6, 6, 0, 0]} barSize={32}>
+                  {languagesWithPercentage.map((_, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
                     />
                   ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+
+        {/* Language breakdown bars */}
+        <div className='lg:w-[340px] card-glass rounded-2xl p-6'>
+          <h3 className='text-lg font-semibold text-foreground mb-6'>
+            {t.github.languages}
+          </h3>
+          {loading ? (
+            <div className='space-y-5'>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className='space-y-2'>
+                  <Skeleton className='h-4 w-24' />
+                  <Skeleton className='h-2 w-full rounded-full' />
                 </div>
-              </div>
-            ) : (
-              <div className='space-y-6'>
-                <Tabs defaultValue='bar' className='w-full'>
-                  <TabsList className='grid w-full grid-cols-2'>
-                    <TabsTrigger value='bar'>{t.github.barChart}</TabsTrigger>
-                    <TabsTrigger value='pie'>{t.github.pieChart}</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value='bar' className='mt-4'>
-                    <ResponsiveContainer width='100%' height={300}>
-                      <BarChart data={languagesWithPercentage}>
-                        <XAxis
-                          dataKey='name'
-                          tick={{ fill: '#9ca3af', fontSize: 12 }}
-                          axisLine={{ stroke: '#374151' }}
-                        />
-                        <YAxis
-                          tick={{ fill: '#9ca3af', fontSize: 12 }}
-                          axisLine={{ stroke: '#374151' }}
-                        />
-                        <Tooltip
-                          cursor={{ fill: 'rgba(255, 255, 255, 0.03)', radius: 8 }}
-                          contentStyle={{
-                            backgroundColor: 'rgba(10, 10, 10, 0.8)',
-                            backdropFilter: 'blur(8px)',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            borderRadius: '12px',
-                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)',
-                            padding: '12px',
-                          }}
-                          itemStyle={{
-                            color: '#fff',
-                            fontSize: '14px',
-                          }}
-                          labelStyle={{
-                            color: '#fff',
-                            fontSize: '14px',
-                            fontWeight: '600',
-                            marginBottom: '4px',
-                          }}
-                          formatter={(
-                            value: number,
-                            name: string,
-                            props: any
-                          ) => [`${(value / 1024).toFixed(1)} KB`, 'Bytes']}
-                        />
-                        <Bar dataKey='bytes' radius={[8, 8, 0, 0]}>
-                          {languagesWithPercentage.map((entry, index) => (
-                            <Cell
-                              key={`cell-${index}`}
-                              fill={COLORS[index % COLORS.length]}
-                            />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </TabsContent>
-                  <TabsContent value='pie' className='mt-4'>
-                    <ResponsiveContainer width='100%' height={300}>
-                      <PieChart>
-                        <Pie
-                          data={pieChartData}
-                          cx='50%'
-                          cy='50%'
-                          labelLine={false}
-                          outerRadius={100}
-                          innerRadius={60}
-                          paddingAngle={5}
-                          cornerRadius={4}
-                          fill='#8884d8'
-                          dataKey='value'
-                          stroke='none'
-                        >
-                          {pieChartData.map((entry, index) => (
-                            <Cell
-                              key={`cell-${index}`}
-                              fill={COLORS[index % COLORS.length]}
-                              className='stroke-transparent hover:opacity-80 transition-opacity duration-300 cursor-pointer'
-                            />
-                          ))}
-                        </Pie>
-                        <Tooltip
-                          contentStyle={{
-                            backgroundColor: 'rgba(23, 23, 23, 0.9)',
-                            backdropFilter: 'blur(10px)',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            borderRadius: '12px',
-                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
-                            color: '#fff',
-                            padding: '12px',
-                          }}
-                          itemStyle={{
-                            color: '#fff',
-                            fontSize: '14px',
-                            fontWeight: '500',
-                          }}
-                          labelStyle={{
-                            color: '#e5e7eb',
-                            fontSize: '14px',
-                            fontWeight: '600',
-                            marginBottom: '4px',
-                          }}
-                          formatter={(
-                            value: number,
-                            name: string,
-                            props: any
-                          ) => [
-                            `${(value / 1024).toFixed(1)} KB`,
-                            `${props.payload.percentage}%`
-                          ]}
-                        />
-                        <Legend
-                          wrapperStyle={{
-                            color: '#fff',
-                            fontSize: '12px',
-                          }}
-                          formatter={(value, entry: any) => (
-                            <span style={{ color: '#fff' }}>
-                              {entry.payload.name}: {entry.payload.percentage}%
-                            </span>
-                          )}
-                          iconType='circle'
-                        />
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </TabsContent>
-                </Tabs>
-                <div className='flex flex-wrap gap-3'>
-                  {languagesWithPercentage.map((lang, index) => (
-                    <div
-                      key={lang.fullName}
-                      className='flex items-center gap-2 px-3 py-1.5 rounded-md badge-violet hover:bg-white/10 transition-colors'
-                    >
+              ))}
+            </div>
+          ) : (
+            <div className='space-y-4'>
+              {languagesWithPercentage.map((lang, index) => (
+                <div key={lang.fullName} className='group'>
+                  <div className='flex items-center justify-between mb-1.5'>
+                    <div className='flex items-center gap-2'>
                       <div
-                        className='w-3 h-3 rounded-full'
+                        className='w-2.5 h-2.5 rounded-full'
                         style={{
                           backgroundColor: COLORS[index % COLORS.length],
                         }}
                       />
-                      <span className='text-sm font-medium'>
+                      <span className='text-sm font-medium text-foreground'>
                         {lang.fullName}
                       </span>
-                      <span className='text-xs text-muted-foreground font-semibold'>
-                        {lang.percentage}%
-                      </span>
                     </div>
-                  ))}
+                    <span className='text-xs text-muted-foreground font-mono'>
+                      {lang.percentage}%
+                    </span>
+                  </div>
+                  <div className='h-1.5 bg-white/5 rounded-full overflow-hidden'>
+                    <div
+                      className='h-full rounded-full transition-all duration-700 ease-out group-hover:opacity-80'
+                      style={{
+                        width: `${lang.percentage}%`,
+                        backgroundColor: COLORS[index % COLORS.length],
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
 }
-

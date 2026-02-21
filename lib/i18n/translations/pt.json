@@ -2,22 +2,32 @@
   "nav": {
     "home": "Início",
     "projects": "Projetos",
-    "contact": "Contato"
+    "contact": "Contato",
+    "back": "Voltar"
   },
   "hero": {
     "title": "Felipe Alfaya",
     "subtitle": "Um Desenvolvedor Web apaixonado por criar soluções digitais que fazem a diferença.",
+    "subtitlePrefix": "Desenvolvedor Web em",
     "viewWork": "Ver Meu Trabalho",
     "downloadCV": "Baixar CV"
   },
   "about": {
     "title": "Sobre Mim",
+    "label": "Sobre",
     "description1": "Sou um desenvolvedor web com mais de 3 anos de experiência criando soluções digitais que fazem a diferença. Tenho proficiência em tecnologias web modernas e um olhar atento para design e experiência do usuário.",
-    "description2": "Atuo no desenvolvimento de interfaces eficientes e funcionais, bem como desenvolvimento da lógica de negócios e backend, buscando sempre código limpo, escalável e otimizado."
+    "description2": "Atuo no desenvolvimento de interfaces eficientes e funcionais, bem como desenvolvimento da lógica de negócios e backend, buscando sempre código limpo, escalável e otimizado.",
+    "stats": {
+      "years": "anos",
+      "projects": "projetos",
+      "technologies": "tecnologias"
+    }
   },
   "services": {
     "title": "O Que Eu Faço",
     "subtitle": "Ofereço uma variedade de serviços para ajudar a trazer sua visão digital à vida",
+    "label": "Serviços",
+    "description": "Do conceito à entrega, transformo ideias em experiências digitais completas — combinando design, código e infraestrutura para criar produtos que realmente funcionam e encantam.",
     "frontend": {
       "title": "Desenvolvimento Frontend",
       "description": "Criando interfaces de usuário responsivas e interativas com frameworks e bibliotecas modernas."
@@ -58,6 +68,7 @@
   },
   "projects": {
     "title": "Projetos em Destaque",
+    "label": "Projetos",
     "viewAll": "Ver Todos os Projetos",
     "ecommerce": {
       "title": "Facilize",
@@ -119,5 +130,11 @@
       "emailLabel": "Envie um E-mail",
       "socialsLabel": "Conectar"
     }
+  },
+  "error404": {
+    "title": "404",
+    "heading": "Página não encontrada",
+    "description": "Parece que você vagou pelo vazio digital. A página que você está procurando não existe ou foi movida.",
+    "backHome": "Voltar para a Realidade"
   }
 }

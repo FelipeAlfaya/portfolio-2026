@@ -7,17 +7,26 @@
   "hero": {
     "title": "Felipe Alfaya",
     "subtitle": "Un Desarrollador Web apasionado por crear soluciones digitales que marquen la diferencia.",
+    "subtitlePrefix": "Desarrollador Web en",
     "viewWork": "Ver Mi Trabajo",
     "downloadCV": "Descargar CV"
   },
   "about": {
     "title": "Sobre Mí",
+    "label": "Sobre",
     "description1": "Soy un desarrollador web con más de 3 años de experiencia creando soluciones digitales que marcan la diferencia. Tengo competencia en tecnologías web modernas y un ojo agudo para el diseño y la experiencia de usuario.",
-    "description2": "Trabajo en el desarrollo de interfaces eficientes y funcionales, así como en desarrollo de lógica de negocio y backend, siempre buscando código limpio, escalable y optimizado."
+    "description2": "Trabajo en el desarrollo de interfaces eficientes y funcionales, así como en desarrollo de lógica de negocio y backend, siempre buscando código limpio, escalable y optimizado.",
+    "stats": {
+      "years": "años",
+      "projects": "proyectos",
+      "technologies": "tecnologías"
+    }
   },
   "services": {
     "title": "Lo Que Hago",
     "subtitle": "Ofrezco una variedad de servicios para ayudar a dar vida a tu visión digital",
+    "label": "Servicios",
+    "description": "Del concepto a la entrega, transformo ideas en experiencias digitales completas — combinando diseño, código e infraestructura para crear productos que realmente funcionan y encantan.",
     "frontend": {
       "title": "Desarrollo Frontend",
       "description": "Creando interfaces de usuario responsivas e interactivas con frameworks y bibliotecas modernas."
@@ -58,6 +67,7 @@
   },
   "projects": {
     "title": "Proyectos Destacados",
+    "label": "Proyectos",
     "viewAll": "Ver Todos los Proyectos",
     "ecommerce": {
       "title": "Facilize",

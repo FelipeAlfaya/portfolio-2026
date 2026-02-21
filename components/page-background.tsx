@@ -10,7 +10,7 @@ export function PageBackground({
   return (
     <div className='min-h-screen bg-background text-foreground relative overflow-hidden'>
       {showDarkVeil && (
-        <div className='fixed inset-0 z-0 pointer-events-none'>
+        <div className='absolute top-0 left-0 w-full h-screen z-0 pointer-events-none'>
           <DarkVeil
             speed={0.3}
             resolutionScale={1}

@@ -10,6 +10,7 @@ import { FeaturedProjects } from '@/components/home/featured-projects'
 import { ContactCTA } from '@/components/home/contact-cta'
 import { PageBackground } from '@/components/page-background'
 import { GitHubSection } from '@/components/home/github-section'
+import LightPillar from '@/components/ui/light-pillar'
 
 export default function HomePage() {
   return (
@@ -17,9 +18,13 @@ export default function HomePage() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <ServicesSection />
-      <GitHubSection />
-      <FeaturedProjects />
+      <div className="relative">
+        <div className="relative z-10">
+          <ServicesSection />
+          <GitHubSection />
+          <FeaturedProjects />
+        </div>
+      </div>
       <ContactCTA />
       <Footer />
     </PageBackground>

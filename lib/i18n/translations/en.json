@@ -2,22 +2,32 @@
   "nav": {
     "home": "Home",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "back": "Go Back"
   },
   "hero": {
     "title": "Felipe Alfaya",
     "subtitle": "A Web Developer passionate about creating digital solutions that make a difference.",
+    "subtitlePrefix": "Web Developer in",
     "viewWork": "View My Work",
     "downloadCV": "Download CV"
   },
   "about": {
     "title": "About Me",
+    "label": "About",
     "description1": "I am a web developer with 3+ years of experience creating digital solutions that make a difference. I have proficiency in modern web technologies and a keen eye for design and user experience.",
-    "description2": "I work on developing efficient and functional interfaces, as well as business logic and backend development, always striving for clean, scalable, and optimized code."
+    "description2": "I work on developing efficient and functional interfaces, as well as business logic and backend development, always striving for clean, scalable, and optimized code.",
+    "stats": {
+      "years": "years",
+      "projects": "projects",
+      "technologies": "technologies"
+    }
   },
   "services": {
     "title": "What I Do",
     "subtitle": "I offer a range of services to help bring your digital vision to life",
+    "label": "Services",
+    "description": "From concept to delivery, I turn ideas into complete digital experiences — combining design, code, and infrastructure to create products that truly work and delight.",
     "frontend": {
       "title": "Frontend Development",
       "description": "Creating responsive and interactive user interfaces with modern frameworks and libraries."
@@ -58,6 +68,7 @@
   },
   "projects": {
     "title": "Featured Projects",
+    "label": "Projects",
     "viewAll": "View All Projects",
     "ecommerce": {
       "title": "Facilize",
@@ -119,5 +130,11 @@
       "emailLabel": "Email Me",
       "socialsLabel": "Connect"
     }
+  },
+  "error404": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "It seems you've wandered into the digital void. The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Return to Reality"
   }
 }
