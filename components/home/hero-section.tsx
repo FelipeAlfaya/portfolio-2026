@@ -45,7 +45,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className='relative min-h-screen flex flex-col justify-center pt-20 pb-20 px-6'>
+    <section className='relative min-h-screen flex flex-col justify-center pt-20 pb-20 px-6 select-none'>
       <div className='relative z-10 max-w-6xl mx-auto w-full' ref={containerRef}>
         <div className='text-center mb-0 mt-8'>
           <div className='min-h-[120px] md:min-h-[160px] flex items-center justify-center'>

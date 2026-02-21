@@ -98,7 +98,7 @@ export function ServicesSection() {
               {t.services.description}
             </p>
 
-            <div className='flex flex-wrap gap-2'>
+            <div className='flex flex-wrap gap-2 select-none'>
               {highlights.map((tech) => (
                 <span
                   key={tech}
@@ -111,7 +111,7 @@ export function ServicesSection() {
           </div>
 
           {/* Right side — CardSwap */}
-          <div className='flex-1 flex justify-center lg:justify-end w-full'>
+          <div className='flex-1 flex justify-center lg:justify-end w-full select-none'>
             <div className='w-full max-w-[500px]' style={{ aspectRatio: '500/520', position: 'relative' }}>
               <CardSwapResponsive>
                 {services.map((service, index) => (

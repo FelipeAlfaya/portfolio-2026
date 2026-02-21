@@ -63,7 +63,7 @@ export function FeaturedProjects() {
           </div>
           <Link
             href='/projects'
-            className='group inline-flex items-center gap-2 text-muted-foreground hover:text-violet-400 transition-colors text-sm font-medium'
+            className='group inline-flex select-none items-center gap-2 text-muted-foreground hover:text-violet-400 transition-colors text-sm font-medium'
           >
             {t.projects.viewAll}
             <ArrowRight className='w-4 h-4 transition-transform group-hover:translate-x-1' />
@@ -71,7 +71,7 @@ export function FeaturedProjects() {
         </div>
 
         {/* Projects grid */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        <div className='grid md:grid-cols-2 select-none lg:grid-cols-3 gap-6'>
           {projects.map((project, index) => (
             <ProjectCard
               key={index}

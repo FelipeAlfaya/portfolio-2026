@@ -112,7 +112,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
       </div>
 
       {/* Chart + language bars side by side */}
-      <div className='flex flex-col lg:flex-row gap-8'>
+      <div className='flex flex-col lg:flex-row gap-8 select-none'>
         {/* Bar chart */}
         <div className='flex-1 card-glass rounded-2xl p-6'>
           <h3 className='text-lg font-semibold text-foreground mb-6'>

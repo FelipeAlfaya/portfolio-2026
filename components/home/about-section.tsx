@@ -113,7 +113,7 @@ export function AboutSection() {
             </p>
 
             {/* Stat counters */}
-            <div className='flex gap-8 flex-wrap justify-center lg:justify-start'>
+            <div className='flex gap-8 flex-wrap justify-center lg:justify-start select-none'>
               {HIGHLIGHTS.map((item) => (
                 <div key={item.label} className='text-center'>
                   <p className='text-3xl md:text-4xl font-bold text-gradient-violet'>
