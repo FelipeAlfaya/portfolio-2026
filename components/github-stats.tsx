@@ -88,22 +88,22 @@ export function GitHubStats({ username }: GitHubStatsProps) {
   return (
     <div className='space-y-10'>
       {/* Inline stat counters */}
-      <div className='flex flex-wrap gap-6 justify-center lg:justify-start'>
+      <div className='grid grid-cols-3 gap-3 md:gap-6'>
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className='flex items-center gap-4 card-glass rounded-2xl px-6 py-4 min-w-[180px]'
+            className='flex items-center gap-2 md:gap-4 card-glass rounded-2xl px-3 md:px-6 py-3 md:py-4'
           >
-            <div className='text-violet-400'>{stat.icon}</div>
+            <div className='text-violet-400 hidden sm:block'>{stat.icon}</div>
             <div>
               {loading ? (
                 <Skeleton className='h-7 w-14 mb-1' />
               ) : (
-                <p className='text-2xl font-bold text-foreground'>
+                <p className='text-lg md:text-2xl font-bold text-foreground'>
                   {stat.value.toLocaleString()}
                 </p>
               )}
-              <p className='text-xs text-muted-foreground uppercase tracking-wider'>
+              <p className='text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider'>
                 {stat.label}
               </p>
             </div>

@@ -59,10 +59,10 @@ export function HeroSection() {
               className="justify-center"
             />
           </div>
-          <div className='min-h-[60px] flex items-center justify-center mb-8 flex-wrap gap-x-2'>
+          <div className='min-h-[60px] flex flex-col md:flex-row items-center justify-center mb-8 gap-x-2 gap-y-1'>
             <VariableProximity
               label={t.hero.subtitlePrefix}
-              className={'text-2xl md:text-4xl font-bold text-white'}
+              className={'text-2xl md:text-4xl font-bold text-white whitespace-nowrap'}
               fromFontVariationSettings="'wght' 400, 'opsz' 9"
               toFontVariationSettings="'wght' 1000, 'opsz' 40"
               containerRef={containerRef}
@@ -70,7 +70,7 @@ export function HeroSection() {
               falloff='linear'
             />
             
-            <div className="inline-grid max-w-[180px] grid-cols-1 grid-rows-1 items-center justify-items-start">
+            <div className="inline-grid max-w-[180px] grid-cols-1 grid-rows-1 items-center justify-items-center md:justify-items-start">
               {/* Espaçador invisível para manter a largura constante baseada na maior palavra */}
               <div className="invisible h-0 flex flex-col pointer-events-none" aria-hidden="true">
                 {technologies.map((item) => (
@@ -89,7 +89,7 @@ export function HeroSection() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="flex justify-start"
+                    className="flex justify-center md:justify-start"
                   >
                     <VariableProximity
                       label={tech.name}

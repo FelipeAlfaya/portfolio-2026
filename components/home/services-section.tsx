@@ -1,9 +1,43 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import CardSwap, { SwapCard } from '@/components/ui/card-swap'
 import { Code, Palette, Smartphone, Database, Cloud, Server } from 'lucide-react'
 import { useTranslation } from '@/hooks/use-translation'
+
+function CardSwapResponsive({ children }: { children: React.ReactNode }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [dims, setDims] = useState({ w: 500, h: 420 })
+
+  useEffect(() => {
+    function measure() {
+      if (containerRef.current) {
+        const w = containerRef.current.offsetWidth
+        const clampedW = Math.min(w, 500)
+        const h = Math.round(clampedW * (420 / 500))
+        setDims({ w: clampedW, h })
+      }
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
+  return (
+    <div ref={containerRef} className='w-full'>
+      <CardSwap
+        width={dims.w}
+        height={dims.h}
+        cardDistance={dims.w < 400 ? 30 : 45}
+        verticalDistance={dims.w < 400 ? 35 : 50}
+        delay={5000}
+        pauseOnHover={true}
+      >
+        {children}
+      </CardSwap>
+    </div>
+  )
+}
 
 export function ServicesSection() {
   const { t } = useTranslation()
@@ -77,33 +111,26 @@ export function ServicesSection() {
           </div>
 
           {/* Right side — CardSwap */}
-          <div className='flex-1 flex justify-center lg:justify-end'>
-            <div style={{ width: 500, height: 520, position: 'relative' }}>
-              <CardSwap
-                width={500}
-                height={420}
-                cardDistance={45}
-                verticalDistance={50}
-                delay={5000}
-                pauseOnHover={true}
-              >
+          <div className='flex-1 flex justify-center lg:justify-end w-full'>
+            <div className='w-full max-w-[500px]' style={{ aspectRatio: '500/520', position: 'relative' }}>
+              <CardSwapResponsive>
                 {services.map((service, index) => (
                   <SwapCard
                     key={index}
-                    className='card-glass p-10 flex flex-col items-center justify-center text-center shadow-[0_0_40px_rgba(82,39,255,0.08)]'
+                    className='card-glass p-6 md:p-10 flex flex-col items-center justify-center text-center shadow-[0_0_40px_rgba(82,39,255,0.08)]'
                   >
-                    <div className='text-violet-500 mb-6 bg-violet-500/10 p-5 rounded-2xl'>
+                    <div className='text-violet-500 mb-4 md:mb-6 bg-violet-500/10 p-3 md:p-5 rounded-2xl'>
                       {service.icon}
                     </div>
-                    <h3 className='text-2xl font-bold mb-4 text-card-foreground'>
+                    <h3 className='text-lg md:text-2xl font-bold mb-2 md:mb-4 text-card-foreground'>
                       {service.title}
                     </h3>
-                    <p className='text-muted-foreground text-base leading-relaxed max-w-sm'>
+                    <p className='text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm'>
                       {service.description}
                     </p>
                   </SwapCard>
                 ))}
-              </CardSwap>
+              </CardSwapResponsive>
             </div>
           </div>
         </div>
