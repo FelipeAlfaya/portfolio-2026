@@ -56,7 +56,7 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
         transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className={`ml-16 md:ml-0 md:w-[calc(50%-48px)] ${isLeft ? 'md:pr-0' : 'md:pl-0'}`}
       >
-        <div className='group relative rounded-2xl transition-all duration-500'>
+        <div className='group relative rounded-2xl transition-all duration-200'>
           {/* Animated gradient border on hover */}
           <div className='absolute -inset-px rounded-2xl bg-gradient-to-br from-violet-500/0 via-violet-500/0 to-violet-500/0 group-hover:from-violet-500/20 group-hover:via-transparent group-hover:to-violet-400/10 transition-all duration-500' />
 

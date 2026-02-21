@@ -78,7 +78,7 @@ export function Footer() {
             {t.footer.copyright}
           </p>
           <p className='text-xs text-muted-foreground/40'>
-            Built with Next.js, TypeScript & ♥
+            Built with Next.js, TypeScript
           </p>
         </div>
       </div>

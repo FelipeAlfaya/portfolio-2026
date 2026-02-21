@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Felipe Alfaya - Web Developer',
   description:
-    'Web Developer passionate about creating engaging and user-friendly digital experiences',
+    'Full-Stack Web Developer Portfolio made in Next.JS and TypeScript',
   icons: {
     icon: '/icon.webp',
   },
