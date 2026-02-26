@@ -59,6 +59,16 @@ export function ProjectCard({
               className='object-contain drop-shadow-lg'
             />
           )
+        case 'pokedex-v2':
+          return (
+            <Image
+              src='/greatball.webp'
+              alt='Pokedex V2'
+              width={80}
+              height={80}
+              className='object-contain drop-shadow-lg'
+            />
+          )
         default:
           return null
       }

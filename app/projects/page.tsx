@@ -55,6 +55,15 @@ export default function ProjectsPage() {
       gradient: 'from-green-600/30 to-blue-600/30',
     },
     {
+      title: 'Pokedex V2',
+      description: t.projectsPage.pokedexV2.description,
+      image: 'pokedex-v2',
+      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      demoUrl: 'https://alfa-next-pokedex.vercel.app/',
+      category: 'Frontend',
+      gradient: 'from-blue-500/30 to-cyan-600/30',
+    },
+    {
       title: 'Pokedex',
       description: t.projectsPage.pokedex.description,
       image: 'pokedex',

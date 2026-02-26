@@ -106,6 +106,9 @@
     },
     "pokedex": {
       "description": "Una pokedex moderna y receptiva hecha en Angular."
+    },
+    "pokedexV2": {
+      "description": "Una pokedex moderna y receptiva hecha en Next.js."
     }
   },
   "contactPage": {
