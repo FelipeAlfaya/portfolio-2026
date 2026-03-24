@@ -23,6 +23,18 @@
       "technologies": "technologies"
     }
   },
+  "facilizeShowcase": {
+    "label": "Main Project",
+    "title": "Facilize — Complete SaaS",
+    "description": "A SaaS platform that centralizes scheduling, finances, CRM, and team management for service providers. Modular multi-tenant architecture with 100+ granular permissions and automatic side-effects between modules.",
+    "highlights": [
+      "100+ granular permissions",
+      "Approval flow",
+      "Multi-tenant",
+      "Automatic side-effects"
+    ],
+    "cta": "View Case Study"
+  },
   "services": {
     "title": "What I Do",
     "subtitle": "I offer a range of services to help bring your digital vision to life",
@@ -110,7 +122,193 @@
     },
     "pokedexV2": {
       "description": "A modern, responsive pokedex made in Next.js."
+    },
+    "acompanhamento": {
+      "title": "Clinical & sports follow-up",
+      "description": "Freelance: web platform for follow-up management in sports and clinical settings — records, progress, assessments, and formal closure documentation, with role-based access control."
     }
+  },
+  "facilizeCase": {
+    "backToProjects": "Back to Projects",
+    "caseLabel": "Case Study",
+    "title": "Facilize",
+    "subtitle": "A complete SaaS platform that centralizes scheduling, finances, inventory and CRM — from solo professionals to multi-branch networks.",
+    "stats": [
+      { "value": "7+", "label": "Modules" },
+      { "value": "100+", "label": "Permissions" },
+      { "value": "3", "label": "Portals" },
+      { "value": "15+", "label": "Services" }
+    ],
+    "productContext": {
+      "title": "The Problem",
+      "problem": "Service providers waste time and money with spreadsheets, notebooks, and disconnected systems.",
+      "audience": "The target audience ranges from solo beauty and health professionals to networks with multiple branches and dozens of employees.",
+      "purpose": "Facilize unifies online scheduling, financial control, inventory, CRM, and team management in a single platform — with Stripe, Google Calendar, and real-time notifications.",
+      "differentialTitle": "The Edge",
+      "differential": "Modular multi-tenant architecture where every completed appointment automatically triggers financial transactions, inventory deduction, commission calculation, and CRM updates — with zero manual intervention."
+    },
+    "modules": {
+      "title": "Platform",
+      "intro": "Modules covering the full business cycle",
+      "items": [
+        { "title": "Scheduling", "description": "Real-time coordination layer with specialized services for conflict validation, per-employee availability, time blocks, approvals, notifications, and automatic integration with finances, inventory, and commissions." },
+        { "title": "Services", "description": "Catalog with flexible pricing: fixed, hourly, or quote-based. Cost calculation with ingredients, profit margin, and per-employee assignment. Presential, online, or home visit modalities." },
+        { "title": "Finances", "description": "Encrypted transactions, multiple accounts, credit cards with automatic invoices, recurring reminders, savings goals, and fiscal note emission." },
+        { "title": "CRM", "description": "Organizational customers, notes, interactions, and full history. Invoices, per-customer revenue metrics, and automatic follow-ups." },
+        { "title": "ERP & Team", "description": "Multi-branch, 100+ granular permissions, access levels, commissions (%, fixed, or hybrid), sales goals, ranking, and individual cash registers." },
+        { "title": "Inventory", "description": "Products with automatic movements linked to appointments. Per-branch inventory with automatic deduction and reversal." },
+        { "title": "Reports", "description": "PDF, CSV, and Excel with templates. Scheduling, financial, inventory, commissions, and performance analytics." },
+        { "title": "Integrations", "description": "Payment-provider webhooks for subscription lifecycle, Google Calendar OAuth, WebSocket for real-time notifications, and Prometheus-compatible observability." }
+      ]
+    },
+    "userFlow": {
+      "title": "Flexible Architecture",
+      "subtitle": "From solo professionals to companies with dozens of employees",
+      "items": [
+        { "title": "Solo Professional", "description": "Simplified dashboard, personal calendar, public booking link, and integrated financial control. Plans with volume-adjusted limits." },
+        { "title": "Company", "description": "Multi-branch with employee hierarchy, department permissions, chained approvals, team goals, and consolidated reports." }
+      ]
+    },
+    "highlights": {
+      "title": "Technical Highlights",
+      "items": [
+        { "title": "100+ Granular Permissions", "description": "Authorization system by resource, profile, and company with 5 access levels: basic, departmental, managerial, executive, and admin." },
+        { "title": "Approval Flow", "description": "Receptionist books → manager approves. History of approvals, rejections, and action audit." },
+        { "title": "Automatic Side-effects", "description": "Completed appointment triggers financial transaction, inventory deduction, commission calculation, and CRM update automatically." },
+        { "title": "Observability stack", "description": "Prometheus-compatible metrics, dashboards for capacity and HTTP health, and runtime signals that support reliable production operations." },
+        { "title": "Financial Encryption", "description": "Sensitive transaction, account, and category data encrypted at rest with on-demand decryption." },
+        { "title": "Plans & Limits", "description": "Feature and limit control by plan: allowed appointment types, recurrence, home visits, and monthly quotas." }
+      ]
+    },
+    "observability": {
+      "label": "Observability & operations",
+      "title": "Metrics, dashboards, and operational awareness",
+      "lead": "The backend integrates with a Prometheus-compatible metrics stack: time series feed internal dashboards and support capacity decisions. Cache and database layers expose health signals for operators. A scheduled evaluator correlates recent trends and notifies trusted contacts when patterns suggest abuse, instability, or incident conditions—with safeguards so gaps in the metrics path do not produce misleading notifications.",
+      "pipelineTitle": "What we measure",
+      "pipelineItems": [
+        "Runtime and Node-level signals: memory footprint, CPU pressure, event-loop responsiveness, and related process health indicators.",
+        "HTTP-level aggregates for the API—throughput, error mix, and latency percentiles—alongside domain-oriented counters where they help triage production issues.",
+        "Degraded but safe behavior when the metrics backend is unavailable, avoiding automated actions on incomplete data."
+      ],
+      "infraTitle": "Infrastructure signals",
+      "infraItems": [
+        "Cache tier: connectivity checks and coarse capacity indicators suitable for ops dashboards.",
+        "Primary datastore: connectivity health and connection-pressure indicators without exposing internal statistics commands or schemas."
+      ],
+      "alertsTitle": "Security & reliability notifications",
+      "alertsLead": "Policy-driven rules run on a regular cadence, classify findings by severity, and group related conditions so operators can respond without alert fatigue.",
+      "alertsBullets": [
+        "Notifications go only to designated operational contacts through the platform mail channel; nothing is sent when no eligible recipient exists.",
+        "Repeated alerts of the same class are throttled so sustained incidents do not flood inboxes.",
+        "Coverage is described at architecture level—authentication stress, server-side error rates, latency regression, unusual traffic, persistence connectivity—without publishing thresholds, environment keys, metric names, or implementation identifiers that could aid abuse."
+      ],
+      "configClosing": "Tuning, routing, credentials, and rollout details live in private configuration and change management, not in public copy, so this case study communicates capability and architecture without a playbook for bypassing safeguards."
+    },
+    "fullstack": {
+      "label": "My Role",
+      "title": "End-to-end development, from product to infrastructure",
+      "bullets": [
+        "Product ideation, business model, and roadmap",
+        "Modular architecture with automatic cross-module integration",
+        "Design system, dashboards, employee portal, and public pages",
+        "REST APIs with business validations and granular authorization",
+        "Multi-tenant modeling with Prisma and versioned migrations",
+        "Deployment with Docker, CI/CD, and AWS infrastructure"
+      ]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "intro": "Three distinct portals — owner, employee, and public — each with flows optimized for their use context.",
+      "bullets": [
+        "Design system with tokens, variables, and reusable components",
+        "Complex state handling: loading, error, empty, and success states",
+        "Dynamic forms with real-time validation",
+        "Full responsiveness, including dashboards and data tables",
+        "Lazy loading, code splitting, and image optimization",
+        "API consumption with retry, caching, and error handling",
+        "Authentication with JWT, 2FA, and Google OAuth"
+      ],
+      "architecture": {
+        "title": "Components",
+        "content": "Atomic composition with custom hooks. UI separated from business logic."
+      },
+      "responsiveness": {
+        "title": "Responsiveness",
+        "content": "Mobile-first with horizontal-scroll tables and adaptive layouts."
+      },
+      "performance": {
+        "title": "Performance",
+        "content": "Per-route code splitting, lazy module loading, and data caching."
+      },
+      "auth": {
+        "title": "Authentication",
+        "content": "JWT, 2FA, OAuth, and session management with device control."
+      }
+    },
+    "backend": {
+      "title": "Backend",
+      "intro": "Modular NestJS API with 15+ specialized services per domain, each encapsulating its rules and integrating automatically via events and side-effects.",
+      "bullets": [
+        "Modular architecture across Auth, Scheduling, Finances, CRM, ERP, and Reports—each domain encapsulates rules, validation, and authorization",
+        "100+ granular permissions with 5 access levels and per-employee customization",
+        "Appointment approval flow with history and action audit",
+        "Automatic side-effects: appointment completion triggers finances, inventory, commissions, and CRM",
+        "Payment-provider webhooks, Google Calendar OAuth, and real-time WebSocket notifications",
+        "Audit log for all critical actions with filters and export"
+      ]
+    },
+    "database": {
+      "title": "Database",
+      "content": "PostgreSQL with Prisma ORM. Multi-tenant modeling with complex cross-domain relations, versioned migrations, and sensitive data encryption."
+    },
+    "cta": {
+      "title": "Explore Facilize",
+      "subtitle": "See the platform in action and explore the modules hands-on.",
+      "button": "Visit Facilize.com.br"
+    }
+  },
+  "acompanhamentoCase": {
+    "backToProjects": "Back to Projects",
+    "caseLabel": "Freelance",
+    "title": "Clinical & sports follow-up platform",
+    "subtitle": "Full-stack system for authorized teams to record progress, metrics, and formal reports — without exposing sensitive data on the public web.",
+    "contextTitle": "Product context",
+    "context": "Built for internal use: consolidate follow-up information over time, with distinct roles (admin, professional, reader) and authorization enforced on the API, not only in the UI.",
+    "architectureTitle": "Two-layer architecture",
+    "architectureLead": "The front end consumes a REST API over JSON on HTTPS; the API base URL is environment-driven so the client is not tied to a fixed host.",
+    "layers": [
+      {
+        "title": "UI (Next.js / React)",
+        "description": "App Router, forms, listings, and dashboard with emphasis on UX and accessibility — desktop sidebar layout, reusable components, and a centralized HTTP client for tokens and errors."
+      },
+      {
+        "title": "API (NestJS)",
+        "description": "Domain modules, Prisma on PostgreSQL, JWT with Passport, DTO validation, and PDF (PDFKit) and spreadsheet (ExcelJS) generation when exports are required."
+      }
+    ],
+    "stackTitle": "Main technologies",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "JWT / Passport",
+      "bcrypt",
+      "PDFKit",
+      "ExcelJS"
+    ],
+    "productTitle": "Data model and business rules",
+    "productBullets": [
+      "Relational schema for people under care, episodes, rehabilitation phases, tests and metrics, and discharge reports with consistency rules.",
+      "Closure criteria implemented with context-specific strategies (Strategy pattern), avoiding a single monolithic block.",
+      "Dashboard with aggregated indicators to support team decisions.",
+      "Enums in the database for controlled types and states, reducing data drift."
+    ],
+    "securityTitle": "Security and confidentiality",
+    "securityBody": "Authentication required for restricted areas, role guards on the server, and redirect to login when the API returns unauthorized. Sensitive data only over secure channels; operational detail and clinical content stay out of public materials."
   },
   "contactPage": {
     "title": "Get in Touch",

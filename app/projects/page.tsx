@@ -33,9 +33,33 @@ export default function ProjectsPage() {
         'Stripe',
       ],
       demoUrl: 'https://facilize.com.br',
+      caseStudySlug: 'facilize',
       category: 'Full Stack',
       gradient: 'from-blue-600/30 to-purple-600/30',
     },
+    /*
+    readicionar depois — projeto Acompanhamento (estudo de caso /projects/acompanhamento)
+    {
+      title: t.projectsPage.acompanhamento.title,
+      description: t.projectsPage.acompanhamento.description,
+      image: <Activity className='w-16 h-16 text-white/60' /> as React.ReactNode,
+      technologies: [
+        'Next.js',
+        'NestJS',
+        'TypeScript',
+        'PostgreSQL',
+        'Prisma',
+        'Tailwind CSS',
+        'Passport',
+        'JWT',
+        'PDFKit',
+        'ExcelJS',
+      ],
+      caseStudySlug: 'acompanhamento',
+      category: 'Freelance',
+      gradient: 'from-emerald-600/30 to-cyan-700/30',
+    },
+    */
     {
       title: 'Netflix Clone',
       description: t.projectsPage.netflix.description,
@@ -115,6 +139,7 @@ export default function ProjectsPage() {
                 image={project.image}
                 techs={project.technologies}
                 demoUrl={project.demoUrl}
+                caseStudySlug={'caseStudySlug' in project ? project.caseStudySlug : undefined}
                 gradient={project.gradient}
                 category={project.category}
               />

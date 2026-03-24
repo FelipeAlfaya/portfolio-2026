@@ -23,39 +23,67 @@ const translations = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en')
+const toHtmlLang = (lang: Language) => {
+  if (lang === 'pt') return 'pt-BR'
+  if (lang === 'es') return 'es-ES'
+  return 'en'
+}
+
+const isValidLanguage = (value: string | undefined | null): value is Language => {
+  return value === 'en' || value === 'pt' || value === 'es'
+}
+
+const readLanguageCookie = (): Language | null => {
+  if (typeof document === 'undefined') return null
+  const match = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith('language='))
+  if (!match) return null
+  const value = decodeURIComponent(match.split('=')[1] ?? '')
+  return isValidLanguage(value) ? value : null
+}
+
+const writeLanguageCookie = (lang: Language) => {
+  if (typeof document === 'undefined') return
+  const secure = typeof window !== 'undefined' && window.location.protocol === 'https:'
+  const maxAgeSeconds = 60 * 60 * 24 * 365
+  document.cookie = `language=${encodeURIComponent(lang)}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax${secure ? '; Secure' : ''}`
+}
+
+export function LanguageProvider({
+  children,
+  defaultLanguage,
+}: {
+  children: React.ReactNode
+  defaultLanguage: Language
+}) {
+  const [language, setLanguageState] = useState<Language>(defaultLanguage)
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'pt' || savedLanguage === 'es')) {
-      setLanguageState(savedLanguage)
-      if (typeof document !== 'undefined') {
-        document.documentElement.lang = savedLanguage
-      }
-    } else {
-      const browserLang = navigator.language.split('-')[0]
-      if (browserLang === 'pt' || browserLang === 'es') {
-        setLanguageState(browserLang)
-        if (typeof document !== 'undefined') {
-          document.documentElement.lang = browserLang
-        }
-      }
-    }
+    const cookieLang = readLanguageCookie()
+    const savedLanguage = localStorage.getItem('language')
+
+    const browserLang = navigator.language.split('-')[0]
+    const detected: Language = browserLang === 'pt' || browserLang === 'es' ? browserLang : 'en'
+
+    const chosen: Language = cookieLang ?? (isValidLanguage(savedLanguage) ? savedLanguage : detected)
+    if (chosen !== defaultLanguage) setLanguageState(chosen)
+    writeLanguageCookie(chosen)
+    localStorage.setItem('language', chosen)
   }, [])
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.documentElement.lang = language
+      const next = toHtmlLang(language)
+      if (document.documentElement.lang !== next) document.documentElement.lang = next
     }
   }, [language])
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     localStorage.setItem('language', lang)
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = lang
-    }
+    writeLanguageCookie(lang)
+    if (typeof document !== 'undefined') document.documentElement.lang = toHtmlLang(lang)
   }
 
   const value = {

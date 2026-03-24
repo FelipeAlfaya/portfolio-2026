@@ -10,7 +10,8 @@ interface ProjectCardProps {
   description: string
   image: string | React.ReactNode
   techs: string[]
-  demoUrl: string
+  demoUrl?: string
+  caseStudySlug?: string
   gradient: string
   category?: string
   featured?: boolean
@@ -22,10 +23,13 @@ export function ProjectCard({
   image,
   techs,
   demoUrl,
+  caseStudySlug,
   gradient,
   category,
   featured = false,
 }: ProjectCardProps) {
+  const href = caseStudySlug ? `/projects/${caseStudySlug}` : demoUrl ?? ''
+  const isInternal = !!caseStudySlug
   const renderImage = () => {
     if (typeof image === 'string') {
       switch (image) {
@@ -78,9 +82,8 @@ export function ProjectCard({
 
   return (
     <Link
-      href={demoUrl}
-      target='_blank'
-      rel='noopener noreferrer'
+      href={href}
+      {...(!isInternal && { target: '_blank', rel: 'noopener noreferrer' })}
       className='group block'
     >
       <div className='card-glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(82,39,255,0.1)] hover:border-violet-500/20'>

@@ -25,6 +25,7 @@ export function FeaturedProjects() {
         'Stripe',
       ],
       demoUrl: 'https://facilize.com.br',
+      caseStudySlug: 'facilize',
       gradient: 'from-blue-600/30 to-purple-600/30',
       category: 'Full Stack',
     },
@@ -80,6 +81,7 @@ export function FeaturedProjects() {
               image={project.image}
               techs={project.techs}
               demoUrl={project.demoUrl}
+              caseStudySlug={'caseStudySlug' in project ? project.caseStudySlug : undefined}
               gradient={project.gradient}
               category={project.category}
               featured

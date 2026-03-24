@@ -23,6 +23,18 @@
       "technologies": "tecnologias"
     }
   },
+  "facilizeShowcase": {
+    "label": "Projeto Principal",
+    "title": "Facilize — SaaS Completo",
+    "description": "Uma plataforma SaaS que centraliza agendamento, finanças, CRM e gestão de equipe para prestadores de serviços. Arquitetura modular multi-tenant com 100+ permissões granulares e side-effects automáticos entre módulos.",
+    "highlights": [
+      "100+ permissões granulares",
+      "Fluxo de aprovação",
+      "Multi-tenant",
+      "Side-effects automáticos"
+    ],
+    "cta": "Ver Estudo de Caso"
+  },
   "services": {
     "title": "O Que Eu Faço",
     "subtitle": "Ofereço uma variedade de serviços para ajudar a trazer sua visão digital à vida",
@@ -110,7 +122,193 @@
     },
     "pokedexV2": {
       "description": "Uma pokedex moderna e responsiva feita em Next.js."
+    },
+    "acompanhamento": {
+      "title": "Acompanhamento clínico-esportivo",
+      "description": "Freelance: plataforma web para gestão de acompanhamento em contexto esportivo e clínico — cadastros, evolução, avaliações e documentação formal de encerramento, com controle de acesso por perfil."
     }
+  },
+  "facilizeCase": {
+    "backToProjects": "Voltar para Projetos",
+    "caseLabel": "Case de Estudo",
+    "title": "Facilize",
+    "subtitle": "Uma plataforma SaaS completa que centraliza agendamento, finanças, estoque e CRM — do profissional autônomo à rede com múltiplas filiais.",
+    "stats": [
+      { "value": "7+", "label": "Módulos" },
+      { "value": "100+", "label": "Permissões" },
+      { "value": "3", "label": "Portais" },
+      { "value": "15+", "label": "Serviços" }
+    ],
+    "productContext": {
+      "title": "O Problema",
+      "problem": "Prestadores de serviços perdem tempo e dinheiro com planilhas, cadernos e sistemas desconectados.",
+      "audience": "O público-alvo vai de profissionais autônomos de beleza e saúde até redes com múltiplas filiais e dezenas de funcionários.",
+      "purpose": "A Facilize unifica agendamento online, controle financeiro, estoque, CRM e gestão de equipe em uma plataforma só — com Stripe, Google Calendar e notificações em tempo real.",
+      "differentialTitle": "O Diferencial",
+      "differential": "Arquitetura modular multi-tenant onde cada agendamento concluído dispara automaticamente transações financeiras, baixa de estoque, cálculo de comissões e atualização do CRM — sem intervenção manual."
+    },
+    "modules": {
+      "title": "Plataforma",
+      "intro": "Módulos que cobrem o ciclo completo do negócio",
+      "items": [
+        { "title": "Agendamentos", "description": "Camada de coordenação em tempo real com serviços especializados para validação de conflitos, disponibilidade por funcionário, bloqueios, aprovações, notificações e integração automática com finanças, estoque e comissões." },
+        { "title": "Serviços", "description": "Catálogo com precificação flexível: preço fixo, por hora ou orçamento. Cálculo de custo com ingredientes, margem de lucro e associação por funcionário. Modalidades presencial, online ou domiciliar." },
+        { "title": "Finanças", "description": "Transações com criptografia, múltiplas contas, cartões de crédito com faturas automáticas, lembretes recorrentes, metas de economia e emissão de notas fiscais." },
+        { "title": "CRM", "description": "Clientes organizacionais, notas, interações e histórico completo. Faturas, métricas de receita por cliente e follow-ups automáticos." },
+        { "title": "ERP & Equipe", "description": "Multi-filial, 100+ permissões granulares, níveis de acesso, comissões (%, fixo ou híbrido), metas de vendas, ranking e controle de caixa individual." },
+        { "title": "Estoque", "description": "Produtos com movimentações automáticas ligadas a agendamentos. Inventário por filial com baixa e devolução automáticas." },
+        { "title": "Relatórios", "description": "PDF, CSV e Excel com templates. Agendamentos, financeiro, estoque, comissões e analytics de performance." },
+        { "title": "Integrações", "description": "Webhooks do provedor de pagamento para ciclo de assinatura, Google Calendar OAuth, WebSocket para notificações em tempo real e observabilidade compatível com Prometheus." }
+      ]
+    },
+    "userFlow": {
+      "title": "Arquitetura Flexível",
+      "subtitle": "Do autônomo à empresa com dezenas de funcionários",
+      "items": [
+        { "title": "Autônomo", "description": "Dashboard simplificado, agenda pessoal, link de booking público e controle financeiro integrado. Planos com limites ajustados ao volume." },
+        { "title": "Empresa", "description": "Multi-filial com hierarquia de funcionários, permissões por departamento, aprovações em cadeia, metas por equipe e relatórios consolidados." }
+      ]
+    },
+    "highlights": {
+      "title": "Destaques Técnicos",
+      "items": [
+        { "title": "100+ Permissões Granulares", "description": "Sistema de autorização por recurso, perfil e empresa com 5 níveis de acesso: básico, departamental, gerencial, executivo e admin." },
+        { "title": "Fluxo de Aprovação", "description": "Recepcionista marca → gerente aprova. Histórico de aprovações, rejeições e auditoria de ações." },
+        { "title": "Side-effects Automáticos", "description": "Agendamento concluído dispara transação financeira, baixa de estoque, cálculo de comissão e atualização do CRM automaticamente." },
+        { "title": "Stack de observabilidade", "description": "Métricas compatíveis com Prometheus, dashboards de capacidade e saúde HTTP, e sinais de runtime que sustentam operação confiável em produção." },
+        { "title": "Criptografia Financeira", "description": "Dados sensíveis de transações, contas e categorias criptografados em repouso com descriptografia sob demanda." },
+        { "title": "Planos e Limites", "description": "Controle de features e limites por plano: tipos de agendamento permitidos, recorrência, visita domiciliar e quotas mensais." }
+      ]
+    },
+    "observability": {
+      "label": "Observabilidade e operações",
+      "title": "Métricas, dashboards e consciência operacional",
+      "lead": "O backend integra uma stack de métricas compatível com Prometheus: séries temporais alimentam dashboards internos e apoiam decisões de capacidade. Camadas de cache e banco expõem sinais de saúde para operação. Um avaliador agendado correlaciona tendências recentes e notifica contatos confiáveis quando padrões sugerem abuso, instabilidade ou condição de incidente — com salvaguardas para que falhas no caminho de métricas não gerem notificações enganosas.",
+      "pipelineTitle": "O que medimos",
+      "pipelineItems": [
+        "Sinais de runtime e de Node: memória, pressão de CPU, responsividade do event loop e indicadores gerais de saúde do processo.",
+        "Agregados HTTP da API — vazão, mix de erros e percentis de latência — complementados por contadores orientados ao domínio quando ajudam a triagem em produção.",
+        "Comportamento degradado porém seguro quando o backend de métricas está indisponível, evitando ações automáticas sobre dados incompletos."
+      ],
+      "infraTitle": "Sinais de infraestrutura",
+      "infraItems": [
+        "Camada de cache: checagens de conectividade e indicadores grosseiros de capacidade para painéis operacionais.",
+        "Banco principal: saúde de conexão e pressão de conexões, sem expor comandos internos de estatística ou detalhes de schema."
+      ],
+      "alertsTitle": "Notificações de segurança e confiabilidade",
+      "alertsLead": "Regras orientadas por política rodam em cadência regular, classificam achados por severidade e agrupam condições relacionadas para que a equipe responda sem fadiga de alertas.",
+      "alertsBullets": [
+        "Notificações vão apenas a contatos operacionais designados pelo canal de e-mail da plataforma; nada é enviado quando não há destinatário elegível.",
+        "Alertas repetidos da mesma classe são limitados para que incidentes prolongados não inundem caixas de entrada.",
+        "A cobertura é descrita em nível de arquitetura — estresse em autenticação, erros no servidor, regressão de latência, tráfego incomum, conectividade com persistência — sem publicar limiares, chaves de ambiente, nomes de métricas ou identificadores de implementação que facilitem abuso."
+      ],
+      "configClosing": "Ajustes finos, roteamento, credenciais e detalhes de rollout ficam em configuração privada e gestão de mudanças, não em texto público, para que o case comunique capacidade e arquitetura sem um roteiro para contornar salvaguardas."
+    },
+    "fullstack": {
+      "label": "Meu Papel",
+      "title": "Desenvolvimento completo, do produto à infraestrutura",
+      "bullets": [
+        "Idealização do produto, modelo de negócio e roadmap",
+        "Arquitetura modular com integração automática entre módulos",
+        "Design system, dashboards, portal do funcionário e telas públicas",
+        "APIs REST com validações de negócio e autorização granular",
+        "Modelagem multi-tenant com Prisma e migrações versionadas",
+        "Deploy com Docker, CI/CD e infraestrutura AWS"
+      ]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "intro": "Três portais distintos — proprietário, funcionário e público — cada um com fluxos otimizados para seu contexto de uso.",
+      "bullets": [
+        "Design system com tokens, variáveis e componentes reutilizáveis",
+        "Tratamento de estados complexos: loading, erro, vazio e sucesso",
+        "Formulários dinâmicos com validação em tempo real",
+        "Responsividade completa, incluindo dashboards e tabelas de dados",
+        "Lazy loading, code splitting e otimização de imagens",
+        "Consumo de API com retry, cache e tratamento de erros",
+        "Autenticação com JWT, 2FA e Google OAuth"
+      ],
+      "architecture": {
+        "title": "Componentes",
+        "content": "Composição atômica com hooks customizados. UI separada da lógica de negócio."
+      },
+      "responsiveness": {
+        "title": "Responsividade",
+        "content": "Mobile-first com tabelas em scroll horizontal e layouts adaptativos."
+      },
+      "performance": {
+        "title": "Performance",
+        "content": "Code splitting por rota, lazy loading de módulos e cache de dados."
+      },
+      "auth": {
+        "title": "Autenticação",
+        "content": "JWT, 2FA, OAuth e gerenciamento de sessões com controle de dispositivos."
+      }
+    },
+    "backend": {
+      "title": "Backend",
+      "intro": "API modular em NestJS com 15+ serviços especializados por domínio, cada um encapsulando suas regras e integrando-se automaticamente aos demais via eventos e side-effects.",
+      "bullets": [
+        "Arquitetura modular em Auth, Agendamentos, Finanças, CRM, ERP e Relatórios — cada domínio encapsula regras, validação e autorização",
+        "100+ permissões granulares com 5 níveis de acesso e customização por funcionário",
+        "Fluxo de aprovação de agendamentos com histórico e auditoria de ações",
+        "Side-effects automáticos: conclusão de agendamento dispara finanças, estoque, comissões e CRM",
+        "Webhooks do provedor de pagamento, OAuth Google Calendar e notificações WebSocket em tempo real",
+        "Log de auditoria para todas as ações críticas com filtros e exportação"
+      ]
+    },
+    "database": {
+      "title": "Banco de Dados",
+      "content": "PostgreSQL com Prisma ORM. Modelagem multi-tenant com relações complexas entre domínios de negócio, migrações versionadas e criptografia de dados sensíveis."
+    },
+    "cta": {
+      "title": "Conheça a Facilize",
+      "subtitle": "Explore a plataforma em funcionamento e veja os módulos na prática.",
+      "button": "Visitar Facilize.com.br"
+    }
+  },
+  "acompanhamentoCase": {
+    "backToProjects": "Voltar para Projetos",
+    "caseLabel": "Freelance",
+    "title": "Plataforma de acompanhamento clínico-esportivo",
+    "subtitle": "Sistema full-stack para equipes autorizadas registrarem evolução, métricas e relatórios formais — sem expor dados sensíveis na web pública.",
+    "contextTitle": "Contexto do produto",
+    "context": "Aplicação voltada ao uso interno: consolidar informações de acompanhamento ao longo do tempo, com papéis distintos (administrador, profissional, leitor) e autorização aplicada na API, não apenas na interface.",
+    "architectureTitle": "Arquitetura em duas camadas",
+    "architectureLead": "Front consome uma API REST via JSON sobre HTTPS; a base da API é configurável por ambiente, sem acoplar host no cliente.",
+    "layers": [
+      {
+        "title": "Interface (Next.js / React)",
+        "description": "App Router, formulários, listagens e dashboard com foco em UX e acessibilidade — layout com navegação lateral no desktop, componentes reutilizáveis e cliente HTTP centralizado para token e erros."
+      },
+      {
+        "title": "API (NestJS)",
+        "description": "Módulos por domínio, Prisma sobre PostgreSQL, JWT com Passport, validação em DTOs e geração de PDF (PDFKit) e planilhas (ExcelJS) quando o fluxo exige exportação."
+      }
+    ],
+    "stackTitle": "Principais tecnologias",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "JWT / Passport",
+      "bcrypt",
+      "PDFKit",
+      "ExcelJS"
+    ],
+    "productTitle": "Modelagem e regras de negócio",
+    "productBullets": [
+      "Esquema relacional para pessoas acompanhadas, episódios, fases de reabilitação, testes e métricas, e relatórios de alta com regras de consistência.",
+      "Critérios de encerramento encapsulados com estratégias por contexto (padrão Strategy), facilitando evolução sem um único bloco monolítico.",
+      "Dashboard com visão sintética de indicadores agregados para apoiar decisões da equipe.",
+      "Tipos e estados controlados no banco via enumerações para reduzir inconsistência de dados."
+    ],
+    "securityTitle": "Segurança e confidencialidade",
+    "securityBody": "Autenticação obrigatória em áreas restritas, perfis com guardas no servidor e redirecionamento ao login quando a API responde não autorizado. Dados sensíveis apenas em canais seguros; detalhes operacionais e conteúdo clínico ficam fora de materiais públicos."
   },
   "contactPage": {
     "title": "Entre em Contato",
