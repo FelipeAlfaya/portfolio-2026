@@ -91,8 +91,8 @@ export const metadata: Metadata = {
     images: ['/greatball.webp'],
   },
   icons: {
-    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
-    apple: '/icon.svg',
+    icon: [{ url: '/icon.webp', type: 'image/webp' }],
+    apple: '/icon.webp',
   },
   category: 'technology',
   ...(googleVerification
